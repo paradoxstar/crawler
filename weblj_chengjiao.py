@@ -114,7 +114,7 @@ def chengjiao_page_search(db_cj, url):
             soup = BeautifulSoup(plain_text)
         except socket.timeout as e:
             if trytimes < 5:
-                time.sleep(5)
+                time.sleep(3)
                 trytimes += 1
                 continue
             else:
@@ -341,7 +341,8 @@ def xiaoqu_chengjiao_spider(db_cj,xq_name=u"京师园"):
     for j in range(pagenum):
         url_page = u"http://bj.lianjia.com/chengjiao/pg%drs%s/" % (j + 1, xq_name)
         chengjiao_page_search(db_cj, url_page)    
-        time.sleep(random.randint(1,2))
+        
+        #time.sleep(random.randint(1,2))
         print xq_name + "  " + str(j) + "th page have been done"
         
     
@@ -397,7 +398,7 @@ if __name__=="__main__":
     for xq in xq_list:
         print 'begin spidering xiaoqu %s' % xq
         xiaoqu_chengjiao_spider(db_cj, xq)
-        time.sleep(random.randint(8,10))
+        #time.sleep(random.randint(8,10))
 
     db_cj.close()
 

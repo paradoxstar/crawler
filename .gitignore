@@ -1,3 +1,4 @@
-log.txt
 *.db
 out*
+data/*.db
+fiddler_process/

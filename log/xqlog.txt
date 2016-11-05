@@ -1,0 +1,485 @@
+开始爬 东城 区全部的小区信息
+total number of xiaoqu is 1252
+http://bj.lianjia.com/xiaoqu/pg3rs东城/ finished 30 works
+http://bj.lianjia.com/xiaoqu/pg4rs东城/ finished 30 works
+http://bj.lianjia.com/xiaoqu/pg42rs东城/ finished 22 works
+http://bj.lianjia.com/xiaoqu/pg17rs东城/ finished 30 works
+http://bj.lianjia.com/xiaoqu/pg31rs东城/ finished 30 works
+http://bj.lianjia.com/xiaoqu/pg38rs东城/ finished 30 works
+http://bj.lianjia.com/xiaoqu/pg6rs东城/ finished 30 works
+http://bj.lianjia.com/xiaoqu/pg39rs东城/ finished 30 works
+http://bj.lianjia.com/xiaoqu/pg12rs东城/ finished 30 works
+http://bj.lianjia.com/xiaoqu/pg33rs东城/ finished 30 works
+http://bj.lianjia.com/xiaoqu/pg29rs东城/ finished 30 works
+http://bj.lianjia.com/xiaoqu/pg26rs东城/ finished 30 works
+http://bj.lianjia.com/xiaoqu/pg35rs东城/ finished 30 works
+http://bj.lianjia.com/xiaoqu/pg27rs东城/ finished 30 works
+http://bj.lianjia.com/xiaoqu/pg14rs东城/ finished 30 works
+http://bj.lianjia.com/xiaoqu/pg10rs东城/ finished 30 works
+http://bj.lianjia.com/xiaoqu/pg18rs东城/ finished 30 works
+http://bj.lianjia.com/xiaoqu/pg21rs东城/ finished 30 works
+http://bj.lianjia.com/xiaoqu/pg8rs东城/ finished 30 works
+http://bj.lianjia.com/xiaoqu/pg1rs东城/ finished 30 works
+http://bj.lianjia.com/xiaoqu/pg24rs东城/ finished 30 works
+http://bj.lianjia.com/xiaoqu/pg15rs东城/ finished 30 works
+http://bj.lianjia.com/xiaoqu/pg25rs东城/ finished 30 works
+http://bj.lianjia.com/xiaoqu/pg2rs东城/ finished 30 works
+http://bj.lianjia.com/xiaoqu/pg41rs东城/ finished 30 works
+http://bj.lianjia.com/xiaoqu/pg11rs东城/ finished 30 works
+http://bj.lianjia.com/xiaoqu/pg28rs东城/ finished 30 works
+http://bj.lianjia.com/xiaoqu/pg5rs东城/ finished 30 works
+http://bj.lianjia.com/xiaoqu/pg37rs东城/ finished 30 works
+http://bj.lianjia.com/xiaoqu/pg30rs东城/ finished 30 works
+http://bj.lianjia.com/xiaoqu/pg19rs东城/ finished 30 works
+http://bj.lianjia.com/xiaoqu/pg23rs东城/ finished 30 works
+http://bj.lianjia.com/xiaoqu/pg40rs东城/ finished 30 works
+http://bj.lianjia.com/xiaoqu/pg36rs东城/ finished 30 works
+http://bj.lianjia.com/xiaoqu/pg34rs东城/ finished 30 works
+http://bj.lianjia.com/xiaoqu/pg9rs东城/ finished 30 works
+http://bj.lianjia.com/xiaoqu/pg16rs东城/ finished 30 works
+http://bj.lianjia.com/xiaoqu/pg7rs东城/ finished 30 works
+http://bj.lianjia.com/xiaoqu/pg22rs东城/ finished 30 works
+http://bj.lianjia.com/xiaoqu/pg13rs东城/ finished 30 works
+http://bj.lianjia.com/xiaoqu/pg32rs东城/ finished 30 works
+http://bj.lianjia.com/xiaoqu/pg20rs东城/ finished 30 works
+爬下了 东城 区全部的小区信息
+开始爬 西城 区全部的小区信息
+total number of xiaoqu is 1793
+http://bj.lianjia.com/xiaoqu/pg60rs西城/ finished 23 works
+http://bj.lianjia.com/xiaoqu/pg7rs西城/ finished 30 works
+http://bj.lianjia.com/xiaoqu/pg36rs西城/ finished 30 works
+http://bj.lianjia.com/xiaoqu/pg54rs西城/ finished 30 works
+http://bj.lianjia.com/xiaoqu/pg49rs西城/ finished 30 works
+http://bj.lianjia.com/xiaoqu/pg45rs西城/ finished 30 works
+http://bj.lianjia.com/xiaoqu/pg8rs西城/ finished 30 works
+http://bj.lianjia.com/xiaoqu/pg29rs西城/ finished 30 works
+http://bj.lianjia.com/xiaoqu/pg25rs西城/ finished 30 works
+http://bj.lianjia.com/xiaoqu/pg10rs西城/ finished 30 works
+http://bj.lianjia.com/xiaoqu/pg9rs西城/ finished 30 works
+http://bj.lianjia.com/xiaoqu/pg1rs西城/ finished 30 works
+http://bj.lianjia.com/xiaoqu/pg53rs西城/ finished 30 works
+http://bj.lianjia.com/xiaoqu/pg51rs西城/ finished 30 works
+http://bj.lianjia.com/xiaoqu/pg24rs西城/ finished 30 works
+http://bj.lianjia.com/xiaoqu/pg43rs西城/ finished 30 works
+http://bj.lianjia.com/xiaoqu/pg57rs西城/ finished 30 works
+http://bj.lianjia.com/xiaoqu/pg39rs西城/ finished 30 works
+http://bj.lianjia.com/xiaoqu/pg40rs西城/ finished 30 works
+http://bj.lianjia.com/xiaoqu/pg34rs西城/ finished 30 works
+http://bj.lianjia.com/xiaoqu/pg48rs西城/ finished 30 works
+http://bj.lianjia.com/xiaoqu/pg20rs西城/ finished 30 works
+http://bj.lianjia.com/xiaoqu/pg23rs西城/ finished 30 works
+http://bj.lianjia.com/xiaoqu/pg18rs西城/ finished 30 works
+http://bj.lianjia.com/xiaoqu/pg37rs西城/ finished 30 works
+http://bj.lianjia.com/xiaoqu/pg2rs西城/ finished 30 works
+http://bj.lianjia.com/xiaoqu/pg11rs西城/ finished 30 works
+http://bj.lianjia.com/xiaoqu/pg58rs西城/ finished 30 works
+http://bj.lianjia.com/xiaoqu/pg52rs西城/ finished 30 works
+http://bj.lianjia.com/xiaoqu/pg6rs西城/ finished 30 works
+http://bj.lianjia.com/xiaoqu/pg44rs西城/ finished 30 works
+http://bj.lianjia.com/xiaoqu/pg59rs西城/ finished 30 works
+http://bj.lianjia.com/xiaoqu/pg42rs西城/ finished 30 works
+http://bj.lianjia.com/xiaoqu/pg46rs西城/ finished 30 works
+http://bj.lianjia.com/xiaoqu/pg55rs西城/ finished 30 works
+http://bj.lianjia.com/xiaoqu/pg56rs西城/ finished 30 works
+http://bj.lianjia.com/xiaoqu/pg47rs西城/ finished 30 works
+http://bj.lianjia.com/xiaoqu/pg33rs西城/ finished 30 works
+http://bj.lianjia.com/xiaoqu/pg41rs西城/ finished 30 works
+http://bj.lianjia.com/xiaoqu/pg50rs西城/ finished 30 works
+http://bj.lianjia.com/xiaoqu/pg38rs西城/ finished 30 works
+http://bj.lianjia.com/xiaoqu/pg27rs西城/ finished 30 works
+http://bj.lianjia.com/xiaoqu/pg5rs西城/ finished 30 works
+http://bj.lianjia.com/xiaoqu/pg30rs西城/ finished 30 works
+http://bj.lianjia.com/xiaoqu/pg31rs西城/ finished 30 works
+http://bj.lianjia.com/xiaoqu/pg19rs西城/ finished 30 works
+http://bj.lianjia.com/xiaoqu/pg26rs西城/ finished 30 works
+http://bj.lianjia.com/xiaoqu/pg14rs西城/ finished 30 works
+http://bj.lianjia.com/xiaoqu/pg28rs西城/ finished 30 works
+http://bj.lianjia.com/xiaoqu/pg16rs西城/ finished 30 works
+http://bj.lianjia.com/xiaoqu/pg13rs西城/ finished 30 works
+http://bj.lianjia.com/xiaoqu/pg21rs西城/ finished 30 works
+http://bj.lianjia.com/xiaoqu/pg22rs西城/ finished 30 works
+http://bj.lianjia.com/xiaoqu/pg15rs西城/ finished 30 works
+http://bj.lianjia.com/xiaoqu/pg17rs西城/ finished 30 works
+http://bj.lianjia.com/xiaoqu/pg3rs西城/ finished 30 works
+http://bj.lianjia.com/xiaoqu/pg12rs西城/ finished 30 works
+http://bj.lianjia.com/xiaoqu/pg4rs西城/ finished 30 works
+http://bj.lianjia.com/xiaoqu/pg35rs西城/ finished 30 works
+http://bj.lianjia.com/xiaoqu/pg32rs西城/ finished 30 works
+爬下了 西城 区全部的小区信息
+开始爬 朝阳 区全部的小区信息
+total number of xiaoqu is 2154
+http://bj.lianjia.com/xiaoqu/pg1rs朝阳/ finished 30 works
+http://bj.lianjia.com/xiaoqu/pg2rs朝阳/ finished 30 works
+http://bj.lianjia.com/xiaoqu/pg72rs朝阳/ finished 24 works
+http://bj.lianjia.com/xiaoqu/pg48rs朝阳/ finished 30 works
+http://bj.lianjia.com/xiaoqu/pg22rs朝阳/ finished 30 works
+http://bj.lianjia.com/xiaoqu/pg14rs朝阳/ finished 30 works
+http://bj.lianjia.com/xiaoqu/pg60rs朝阳/ finished 30 works
+http://bj.lianjia.com/xiaoqu/pg27rs朝阳/ finished 30 works
+http://bj.lianjia.com/xiaoqu/pg53rs朝阳/ finished 30 works
+http://bj.lianjia.com/xiaoqu/pg68rs朝阳/ finished 30 works
+http://bj.lianjia.com/xiaoqu/pg40rs朝阳/ finished 30 works
+http://bj.lianjia.com/xiaoqu/pg49rs朝阳/ finished 30 works
+http://bj.lianjia.com/xiaoqu/pg45rs朝阳/ finished 30 works
+http://bj.lianjia.com/xiaoqu/pg55rs朝阳/ finished 30 works
+http://bj.lianjia.com/xiaoqu/pg64rs朝阳/ finished 30 works
+http://bj.lianjia.com/xiaoqu/pg71rs朝阳/ finished 30 works
+http://bj.lianjia.com/xiaoqu/pg51rs朝阳/ finished 30 works
+http://bj.lianjia.com/xiaoqu/pg59rs朝阳/ finished 30 works
+http://bj.lianjia.com/xiaoqu/pg65rs朝阳/ finished 30 works
+http://bj.lianjia.com/xiaoqu/pg57rs朝阳/ finished 30 works
+http://bj.lianjia.com/xiaoqu/pg69rs朝阳/ finished 30 works
+http://bj.lianjia.com/xiaoqu/pg58rs朝阳/ finished 30 works
+http://bj.lianjia.com/xiaoqu/pg56rs朝阳/ finished 30 works
+http://bj.lianjia.com/xiaoqu/pg66rs朝阳/ finished 30 works
+http://bj.lianjia.com/xiaoqu/pg52rs朝阳/ finished 30 works
+http://bj.lianjia.com/xiaoqu/pg41rs朝阳/ finished 30 works
+http://bj.lianjia.com/xiaoqu/pg63rs朝阳/ finished 30 works
+http://bj.lianjia.com/xiaoqu/pg39rs朝阳/ finished 30 works
+http://bj.lianjia.com/xiaoqu/pg46rs朝阳/ finished 30 works
+http://bj.lianjia.com/xiaoqu/pg61rs朝阳/ finished 30 works
+http://bj.lianjia.com/xiaoqu/pg38rs朝阳/ finished 30 works
+http://bj.lianjia.com/xiaoqu/pg18rs朝阳/ finished 30 works
+http://bj.lianjia.com/xiaoqu/pg62rs朝阳/ finished 30 works
+http://bj.lianjia.com/xiaoqu/pg31rs朝阳/ finished 30 works
+http://bj.lianjia.com/xiaoqu/pg34rs朝阳/ finished 30 works
+http://bj.lianjia.com/xiaoqu/pg30rs朝阳/ finished 30 works
+http://bj.lianjia.com/xiaoqu/pg54rs朝阳/ finished 30 works
+http://bj.lianjia.com/xiaoqu/pg36rs朝阳/ finished 30 works
+http://bj.lianjia.com/xiaoqu/pg32rs朝阳/ finished 30 works
+http://bj.lianjia.com/xiaoqu/pg19rs朝阳/ finished 30 works
+http://bj.lianjia.com/xiaoqu/pg28rs朝阳/ finished 30 works
+http://bj.lianjia.com/xiaoqu/pg47rs朝阳/ finished 30 works
+http://bj.lianjia.com/xiaoqu/pg50rs朝阳/ finished 30 works
+http://bj.lianjia.com/xiaoqu/pg26rs朝阳/ finished 30 works
+http://bj.lianjia.com/xiaoqu/pg44rs朝阳/ finished 30 works
+http://bj.lianjia.com/xiaoqu/pg42rs朝阳/ finished 30 works
+http://bj.lianjia.com/xiaoqu/pg25rs朝阳/ finished 30 works
+http://bj.lianjia.com/xiaoqu/pg20rs朝阳/ finished 30 works
+http://bj.lianjia.com/xiaoqu/pg43rs朝阳/ finished 30 works
+http://bj.lianjia.com/xiaoqu/pg9rs朝阳/ finished 30 works
+http://bj.lianjia.com/xiaoqu/pg37rs朝阳/ finished 30 works
+http://bj.lianjia.com/xiaoqu/pg35rs朝阳/ finished 30 works
+http://bj.lianjia.com/xiaoqu/pg29rs朝阳/ finished 30 works
+http://bj.lianjia.com/xiaoqu/pg67rs朝阳/ finished 30 works
+http://bj.lianjia.com/xiaoqu/pg13rs朝阳/ finished 30 works
+http://bj.lianjia.com/xiaoqu/pg70rs朝阳/ finished 30 works
+http://bj.lianjia.com/xiaoqu/pg16rs朝阳/ finished 30 works
+http://bj.lianjia.com/xiaoqu/pg12rs朝阳/ finished 30 works
+http://bj.lianjia.com/xiaoqu/pg10rs朝阳/ finished 30 works
+http://bj.lianjia.com/xiaoqu/pg4rs朝阳/ finished 30 works
+http://bj.lianjia.com/xiaoqu/pg21rs朝阳/ finished 30 works
+http://bj.lianjia.com/xiaoqu/pg23rs朝阳/ finished 30 works
+http://bj.lianjia.com/xiaoqu/pg24rs朝阳/ finished 30 works
+http://bj.lianjia.com/xiaoqu/pg8rs朝阳/ finished 30 works
+http://bj.lianjia.com/xiaoqu/pg17rs朝阳/ finished 30 works
+http://bj.lianjia.com/xiaoqu/pg15rs朝阳/ finished 30 works
+http://bj.lianjia.com/xiaoqu/pg6rs朝阳/ finished 30 works
+http://bj.lianjia.com/xiaoqu/pg11rs朝阳/ finished 30 works
+http://bj.lianjia.com/xiaoqu/pg5rs朝阳/ finished 30 works
+http://bj.lianjia.com/xiaoqu/pg7rs朝阳/ finished 30 works
+http://bj.lianjia.com/xiaoqu/pg3rs朝阳/ finished 30 works
+http://bj.lianjia.com/xiaoqu/pg33rs朝阳/ finished 30 works
+爬下了 朝阳 区全部的小区信息
+
+开始爬 海淀 区全部的小区信息
+total number of xiaoqu is 2075
+http://bj.lianjia.com/xiaoqu/pg70rs海淀/ finished 5 works
+http://bj.lianjia.com/xiaoqu/pg38rs海淀/ finished 30 works
+http://bj.lianjia.com/xiaoqu/pg15rs海淀/ finished 30 works
+http://bj.lianjia.com/xiaoqu/pg35rs海淀/ finished 30 works
+http://bj.lianjia.com/xiaoqu/pg65rs海淀/ finished 30 works
+http://bj.lianjia.com/xiaoqu/pg26rs海淀/ finished 30 works
+http://bj.lianjia.com/xiaoqu/pg43rs海淀/ finished 30 works
+http://bj.lianjia.com/xiaoqu/pg24rs海淀/ finished 30 works
+http://bj.lianjia.com/xiaoqu/pg27rs海淀/ finished 30 works
+http://bj.lianjia.com/xiaoqu/pg50rs海淀/ finished 30 works
+http://bj.lianjia.com/xiaoqu/pg53rs海淀/ finished 30 works
+http://bj.lianjia.com/xiaoqu/pg63rs海淀/ finished 30 works
+http://bj.lianjia.com/xiaoqu/pg34rs海淀/ finished 30 works
+http://bj.lianjia.com/xiaoqu/pg66rs海淀/ finished 30 works
+http://bj.lianjia.com/xiaoqu/pg55rs海淀/ finished 30 works
+http://bj.lianjia.com/xiaoqu/pg46rs海淀/ finished 30 works
+http://bj.lianjia.com/xiaoqu/pg39rs海淀/ finished 30 works
+http://bj.lianjia.com/xiaoqu/pg31rs海淀/ finished 30 works
+http://bj.lianjia.com/xiaoqu/pg41rs海淀/ finished 30 works
+http://bj.lianjia.com/xiaoqu/pg32rs海淀/ finished 30 works
+http://bj.lianjia.com/xiaoqu/pg69rs海淀/ finished 30 works
+http://bj.lianjia.com/xiaoqu/pg1rs海淀/ finished 30 works
+http://bj.lianjia.com/xiaoqu/pg36rs海淀/ finished 30 works
+http://bj.lianjia.com/xiaoqu/pg40rs海淀/ finished 30 works
+http://bj.lianjia.com/xiaoqu/pg7rs海淀/ finished 30 works
+http://bj.lianjia.com/xiaoqu/pg58rs海淀/ finished 30 works
+http://bj.lianjia.com/xiaoqu/pg2rs海淀/ finished 30 works
+http://bj.lianjia.com/xiaoqu/pg16rs海淀/ finished 30 works
+http://bj.lianjia.com/xiaoqu/pg68rs海淀/ finished 30 works
+http://bj.lianjia.com/xiaoqu/pg60rs海淀/ finished 30 works
+http://bj.lianjia.com/xiaoqu/pg59rs海淀/ finished 30 works
+http://bj.lianjia.com/xiaoqu/pg67rs海淀/ finished 30 works
+http://bj.lianjia.com/xiaoqu/pg61rs海淀/ finished 30 works
+http://bj.lianjia.com/xiaoqu/pg37rs海淀/ finished 30 works
+http://bj.lianjia.com/xiaoqu/pg42rs海淀/ finished 30 works
+http://bj.lianjia.com/xiaoqu/pg54rs海淀/ finished 30 works
+http://bj.lianjia.com/xiaoqu/pg64rs海淀/ finished 30 works
+http://bj.lianjia.com/xiaoqu/pg51rs海淀/ finished 30 works
+http://bj.lianjia.com/xiaoqu/pg52rs海淀/ finished 30 works
+http://bj.lianjia.com/xiaoqu/pg13rs海淀/ finished 30 works
+http://bj.lianjia.com/xiaoqu/pg28rs海淀/ finished 30 works
+http://bj.lianjia.com/xiaoqu/pg33rs海淀/ finished 30 works
+http://bj.lianjia.com/xiaoqu/pg57rs海淀/ finished 30 works
+http://bj.lianjia.com/xiaoqu/pg29rs海淀/ finished 30 works
+http://bj.lianjia.com/xiaoqu/pg20rs海淀/ finished 30 works
+http://bj.lianjia.com/xiaoqu/pg8rs海淀/ finished 30 works
+http://bj.lianjia.com/xiaoqu/pg12rs海淀/ finished 30 works
+http://bj.lianjia.com/xiaoqu/pg3rs海淀/ finished 30 works
+http://bj.lianjia.com/xiaoqu/pg10rs海淀/ finished 30 works
+http://bj.lianjia.com/xiaoqu/pg23rs海淀/ finished 30 works
+http://bj.lianjia.com/xiaoqu/pg30rs海淀/ finished 30 works
+http://bj.lianjia.com/xiaoqu/pg25rs海淀/ finished 30 works
+http://bj.lianjia.com/xiaoqu/pg56rs海淀/ finished 30 works
+http://bj.lianjia.com/xiaoqu/pg44rs海淀/ finished 30 works
+http://bj.lianjia.com/xiaoqu/pg17rs海淀/ finished 30 works
+http://bj.lianjia.com/xiaoqu/pg62rs海淀/ finished 30 works
+http://bj.lianjia.com/xiaoqu/pg47rs海淀/ finished 30 works
+http://bj.lianjia.com/xiaoqu/pg49rs海淀/ finished 30 works
+http://bj.lianjia.com/xiaoqu/pg21rs海淀/ finished 30 works
+http://bj.lianjia.com/xiaoqu/pg48rs海淀/ finished 30 works
+http://bj.lianjia.com/xiaoqu/pg22rs海淀/ finished 30 works
+http://bj.lianjia.com/xiaoqu/pg45rs海淀/ finished 30 works
+http://bj.lianjia.com/xiaoqu/pg9rs海淀/ finished 30 works
+http://bj.lianjia.com/xiaoqu/pg6rs海淀/ finished 30 works
+http://bj.lianjia.com/xiaoqu/pg5rs海淀/ finished 30 works
+http://bj.lianjia.com/xiaoqu/pg14rs海淀/ finished 30 works
+http://bj.lianjia.com/xiaoqu/pg19rs海淀/ finished 30 works
+http://bj.lianjia.com/xiaoqu/pg4rs海淀/ finished 30 works
+http://bj.lianjia.com/xiaoqu/pg18rs海淀/ finished 30 works
+http://bj.lianjia.com/xiaoqu/pg11rs海淀/ finished 30 works
+爬下了 海淀 区全部的小区信息
+
+
+开始爬 丰台 区全部的小区信息
+total number of xiaoqu is 1326
+http://bj.lianjia.com/xiaoqu/pg45rs丰台/ finished 6 works
+http://bj.lianjia.com/xiaoqu/pg43rs丰台/ finished 30 works
+http://bj.lianjia.com/xiaoqu/pg21rs丰台/ finished 30 works
+http://bj.lianjia.com/xiaoqu/pg1rs丰台/ finished 30 works
+http://bj.lianjia.com/xiaoqu/pg42rs丰台/ finished 30 works
+http://bj.lianjia.com/xiaoqu/pg34rs丰台/ finished 30 works
+http://bj.lianjia.com/xiaoqu/pg41rs丰台/ finished 30 works
+http://bj.lianjia.com/xiaoqu/pg38rs丰台/ finished 30 works
+http://bj.lianjia.com/xiaoqu/pg30rs丰台/ finished 30 works
+http://bj.lianjia.com/xiaoqu/pg2rs丰台/ finished 30 works
+http://bj.lianjia.com/xiaoqu/pg39rs丰台/ finished 30 works
+http://bj.lianjia.com/xiaoqu/pg26rs丰台/ finished 30 works
+http://bj.lianjia.com/xiaoqu/pg19rs丰台/ finished 30 works
+http://bj.lianjia.com/xiaoqu/pg35rs丰台/ finished 30 works
+http://bj.lianjia.com/xiaoqu/pg24rs丰台/ finished 30 works
+http://bj.lianjia.com/xiaoqu/pg32rs丰台/ finished 30 works
+http://bj.lianjia.com/xiaoqu/pg33rs丰台/ finished 30 works
+http://bj.lianjia.com/xiaoqu/pg16rs丰台/ finished 30 works
+http://bj.lianjia.com/xiaoqu/pg27rs丰台/ finished 30 works
+http://bj.lianjia.com/xiaoqu/pg11rs丰台/ finished 30 works
+http://bj.lianjia.com/xiaoqu/pg37rs丰台/ finished 30 works
+http://bj.lianjia.com/xiaoqu/pg20rs丰台/ finished 30 works
+http://bj.lianjia.com/xiaoqu/pg25rs丰台/ finished 30 works
+http://bj.lianjia.com/xiaoqu/pg23rs丰台/ finished 30 works
+http://bj.lianjia.com/xiaoqu/pg15rs丰台/ finished 30 works
+http://bj.lianjia.com/xiaoqu/pg29rs丰台/ finished 30 works
+http://bj.lianjia.com/xiaoqu/pg18rs丰台/ finished 30 works
+http://bj.lianjia.com/xiaoqu/pg28rs丰台/ finished 30 works
+http://bj.lianjia.com/xiaoqu/pg31rs丰台/ finished 30 works
+http://bj.lianjia.com/xiaoqu/pg3rs丰台/ finished 30 works
+http://bj.lianjia.com/xiaoqu/pg9rs丰台/ finished 30 works
+http://bj.lianjia.com/xiaoqu/pg40rs丰台/ finished 30 works
+http://bj.lianjia.com/xiaoqu/pg13rs丰台/ finished 30 works
+http://bj.lianjia.com/xiaoqu/pg36rs丰台/ finished 30 works
+http://bj.lianjia.com/xiaoqu/pg7rs丰台/ finished 30 works
+http://bj.lianjia.com/xiaoqu/pg17rs丰台/ finished 30 works
+http://bj.lianjia.com/xiaoqu/pg10rs丰台/ finished 30 works
+http://bj.lianjia.com/xiaoqu/pg14rs丰台/ finished 30 works
+http://bj.lianjia.com/xiaoqu/pg5rs丰台/ finished 30 works
+http://bj.lianjia.com/xiaoqu/pg4rs丰台/ finished 30 works
+http://bj.lianjia.com/xiaoqu/pg44rs丰台/ finished 30 works
+http://bj.lianjia.com/xiaoqu/pg6rs丰台/ finished 30 works
+http://bj.lianjia.com/xiaoqu/pg12rs丰台/ finished 30 works
+http://bj.lianjia.com/xiaoqu/pg22rs丰台/ finished 30 works
+http://bj.lianjia.com/xiaoqu/pg8rs丰台/ finished 30 works
+爬下了 丰台 区全部的小区信息
+
+开始爬 石景山 区全部的小区信息
+total number of xiaoqu is 268
+http://bj.lianjia.com/xiaoqu/pg9rs石景山/ finished 28 works
+http://bj.lianjia.com/xiaoqu/pg1rs石景山/ finished 30 works
+http://bj.lianjia.com/xiaoqu/pg3rs石景山/ finished 30 works
+http://bj.lianjia.com/xiaoqu/pg6rs石景山/ finished 30 works
+http://bj.lianjia.com/xiaoqu/pg2rs石景山/ finished 30 works
+http://bj.lianjia.com/xiaoqu/pg4rs石景山/ finished 30 works
+http://bj.lianjia.com/xiaoqu/pg8rs石景山/ finished 30 works
+http://bj.lianjia.com/xiaoqu/pg5rs石景山/ finished 30 works
+http://bj.lianjia.com/xiaoqu/pg7rs石景山/ finished 30 works
+爬下了 石景山 区全部的小区信息
+开始爬 通州 区全部的小区信息
+total number of xiaoqu is 644
+http://bj.lianjia.com/xiaoqu/pg22rs通州/ finished 14 works
+http://bj.lianjia.com/xiaoqu/pg1rs通州/ finished 30 works
+http://bj.lianjia.com/xiaoqu/pg7rs通州/ finished 30 works
+http://bj.lianjia.com/xiaoqu/pg3rs通州/ finished 30 works
+http://bj.lianjia.com/xiaoqu/pg8rs通州/ finished 30 works
+http://bj.lianjia.com/xiaoqu/pg17rs通州/ finished 30 works
+http://bj.lianjia.com/xiaoqu/pg21rs通州/ finished 30 works
+http://bj.lianjia.com/xiaoqu/pg14rs通州/ finished 30 works
+http://bj.lianjia.com/xiaoqu/pg10rs通州/ finished 30 works
+http://bj.lianjia.com/xiaoqu/pg6rs通州/ finished 30 works
+http://bj.lianjia.com/xiaoqu/pg18rs通州/ finished 30 works
+http://bj.lianjia.com/xiaoqu/pg4rs通州/ finished 30 works
+http://bj.lianjia.com/xiaoqu/pg2rs通州/ finished 30 works
+http://bj.lianjia.com/xiaoqu/pg9rs通州/ finished 30 works
+http://bj.lianjia.com/xiaoqu/pg15rs通州/ finished 30 works
+http://bj.lianjia.com/xiaoqu/pg13rs通州/ finished 30 works
+http://bj.lianjia.com/xiaoqu/pg5rs通州/ finished 30 works
+http://bj.lianjia.com/xiaoqu/pg19rs通州/ finished 30 works
+http://bj.lianjia.com/xiaoqu/pg11rs通州/ finished 30 works
+http://bj.lianjia.com/xiaoqu/pg20rs通州/ finished 30 works
+http://bj.lianjia.com/xiaoqu/pg12rs通州/ finished 30 works
+http://bj.lianjia.com/xiaoqu/pg16rs通州/ finished 30 works
+爬下了 通州 区全部的小区信息
+开始爬 昌平 区全部的小区信息
+total number of xiaoqu is 730
+http://bj.lianjia.com/xiaoqu/pg25rs昌平/ finished 10 works
+http://bj.lianjia.com/xiaoqu/pg15rs昌平/ finished 30 works
+http://bj.lianjia.com/xiaoqu/pg19rs昌平/ finished 30 works
+http://bj.lianjia.com/xiaoqu/pg21rs昌平/ finished 30 works
+http://bj.lianjia.com/xiaoqu/pg7rs昌平/ finished 30 works
+http://bj.lianjia.com/xiaoqu/pg23rs昌平/ finished 30 works
+http://bj.lianjia.com/xiaoqu/pg20rs昌平/ finished 30 works
+http://bj.lianjia.com/xiaoqu/pg8rs昌平/ finished 30 works
+http://bj.lianjia.com/xiaoqu/pg10rs昌平/ finished 30 works
+http://bj.lianjia.com/xiaoqu/pg4rs昌平/ finished 30 works
+http://bj.lianjia.com/xiaoqu/pg13rs昌平/ finished 30 works
+http://bj.lianjia.com/xiaoqu/pg24rs昌平/ finished 30 works
+http://bj.lianjia.com/xiaoqu/pg5rs昌平/ finished 30 works
+http://bj.lianjia.com/xiaoqu/pg2rs昌平/ finished 30 works
+http://bj.lianjia.com/xiaoqu/pg6rs昌平/ finished 30 works
+http://bj.lianjia.com/xiaoqu/pg18rs昌平/ finished 30 works
+http://bj.lianjia.com/xiaoqu/pg22rs昌平/ finished 30 works
+http://bj.lianjia.com/xiaoqu/pg14rs昌平/ finished 30 works
+http://bj.lianjia.com/xiaoqu/pg9rs昌平/ finished 30 works
+http://bj.lianjia.com/xiaoqu/pg16rs昌平/ finished 30 works
+http://bj.lianjia.com/xiaoqu/pg12rs昌平/ finished 30 works
+http://bj.lianjia.com/xiaoqu/pg3rs昌平/ finished 30 works
+http://bj.lianjia.com/xiaoqu/pg1rs昌平/ finished 30 works
+http://bj.lianjia.com/xiaoqu/pg11rs昌平/ finished 30 works
+http://bj.lianjia.com/xiaoqu/pg17rs昌平/ finished 30 works
+爬下了 昌平 区全部的小区信息
+开始爬 大兴 区全部的小区信息
+total number of xiaoqu is 490
+http://bj.lianjia.com/xiaoqu/pg17rs大兴/ finished 10 works
+http://bj.lianjia.com/xiaoqu/pg1rs大兴/ finished 30 works
+http://bj.lianjia.com/xiaoqu/pg12rs大兴/ finished 30 works
+http://bj.lianjia.com/xiaoqu/pg10rs大兴/ finished 30 works
+http://bj.lianjia.com/xiaoqu/pg13rs大兴/ finished 30 works
+http://bj.lianjia.com/xiaoqu/pg11rs大兴/ finished 30 works
+http://bj.lianjia.com/xiaoqu/pg7rs大兴/ finished 30 works
+http://bj.lianjia.com/xiaoqu/pg16rs大兴/ finished 30 works
+http://bj.lianjia.com/xiaoqu/pg14rs大兴/ finished 30 works
+http://bj.lianjia.com/xiaoqu/pg8rs大兴/ finished 30 works
+http://bj.lianjia.com/xiaoqu/pg6rs大兴/ finished 30 works
+http://bj.lianjia.com/xiaoqu/pg5rs大兴/ finished 30 works
+http://bj.lianjia.com/xiaoqu/pg4rs大兴/ finished 30 works
+http://bj.lianjia.com/xiaoqu/pg3rs大兴/ finished 30 works
+http://bj.lianjia.com/xiaoqu/pg2rs大兴/ finished 30 works
+http://bj.lianjia.com/xiaoqu/pg15rs大兴/ finished 30 works
+http://bj.lianjia.com/xiaoqu/pg9rs大兴/ finished 30 works
+爬下了 大兴 区全部的小区信息
+开始爬 亦庄开发区 区全部的小区信息
+total number of xiaoqu is 120
+http://bj.lianjia.com/xiaoqu/pg1rs亦庄开发区/ finished 30 works
+http://bj.lianjia.com/xiaoqu/pg3rs亦庄开发区/ finished 30 works
+http://bj.lianjia.com/xiaoqu/pg2rs亦庄开发区/ finished 30 works
+http://bj.lianjia.com/xiaoqu/pg4rs亦庄开发区/ finished 30 works
+爬下了 亦庄开发区 区全部的小区信息
+开始爬 顺义 区全部的小区信息
+total number of xiaoqu is 353
+http://bj.lianjia.com/xiaoqu/pg12rs顺义/ finished 23 works
+http://bj.lianjia.com/xiaoqu/pg2rs顺义/ finished 30 works
+http://bj.lianjia.com/xiaoqu/pg1rs顺义/ finished 30 works
+http://bj.lianjia.com/xiaoqu/pg5rs顺义/ finished 30 works
+http://bj.lianjia.com/xiaoqu/pg7rs顺义/ finished 30 works
+http://bj.lianjia.com/xiaoqu/pg3rs顺义/ finished 30 works
+http://bj.lianjia.com/xiaoqu/pg4rs顺义/ finished 30 works
+http://bj.lianjia.com/xiaoqu/pg8rs顺义/ finished 30 works
+http://bj.lianjia.com/xiaoqu/pg11rs顺义/ finished 30 works
+http://bj.lianjia.com/xiaoqu/pg10rs顺义/ finished 30 works
+http://bj.lianjia.com/xiaoqu/pg9rs顺义/ finished 30 works
+http://bj.lianjia.com/xiaoqu/pg6rs顺义/ finished 30 works
+爬下了 顺义 区全部的小区信息
+开始爬 房山 区全部的小区信息
+total number of xiaoqu is 555
+http://bj.lianjia.com/xiaoqu/pg19rs房山/ finished 15 works
+http://bj.lianjia.com/xiaoqu/pg9rs房山/ finished 30 works
+http://bj.lianjia.com/xiaoqu/pg15rs房山/ finished 30 works
+http://bj.lianjia.com/xiaoqu/pg4rs房山/ finished 30 works
+http://bj.lianjia.com/xiaoqu/pg6rs房山/ finished 30 works
+http://bj.lianjia.com/xiaoqu/pg16rs房山/ finished 30 works
+http://bj.lianjia.com/xiaoqu/pg1rs房山/ finished 30 works
+http://bj.lianjia.com/xiaoqu/pg8rs房山/ finished 30 works
+http://bj.lianjia.com/xiaoqu/pg17rs房山/ finished 30 works
+http://bj.lianjia.com/xiaoqu/pg5rs房山/ finished 30 works
+http://bj.lianjia.com/xiaoqu/pg18rs房山/ finished 30 works
+http://bj.lianjia.com/xiaoqu/pg14rs房山/ finished 30 works
+http://bj.lianjia.com/xiaoqu/pg7rs房山/ finished 30 works
+http://bj.lianjia.com/xiaoqu/pg3rs房山/ finished 30 works
+http://bj.lianjia.com/xiaoqu/pg12rs房山/ finished 30 works
+http://bj.lianjia.com/xiaoqu/pg2rs房山/ finished 30 works
+http://bj.lianjia.com/xiaoqu/pg13rs房山/ finished 30 works
+http://bj.lianjia.com/xiaoqu/pg10rs房山/ finished 30 works
+http://bj.lianjia.com/xiaoqu/pg11rs房山/ finished 30 works
+爬下了 房山 区全部的小区信息
+开始爬 门头沟 区全部的小区信息
+total number of xiaoqu is 214
+http://bj.lianjia.com/xiaoqu/pg8rs门头沟/ finished 4 works
+http://bj.lianjia.com/xiaoqu/pg2rs门头沟/ finished 30 works
+http://bj.lianjia.com/xiaoqu/pg6rs门头沟/ finished 30 works
+http://bj.lianjia.com/xiaoqu/pg4rs门头沟/ finished 30 works
+http://bj.lianjia.com/xiaoqu/pg7rs门头沟/ finished 30 works
+http://bj.lianjia.com/xiaoqu/pg3rs门头沟/ finished 30 works
+http://bj.lianjia.com/xiaoqu/pg5rs门头沟/ finished 30 works
+http://bj.lianjia.com/xiaoqu/pg1rs门头沟/ finished 30 works
+爬下了 门头沟 区全部的小区信息
+开始爬 平谷 区全部的小区信息
+total number of xiaoqu is 25
+http://bj.lianjia.com/xiaoqu/pg1rs平谷/ finished 25 works
+爬下了 平谷 区全部的小区信息
+开始爬 怀柔 区全部的小区信息
+total number of xiaoqu is 32
+http://bj.lianjia.com/xiaoqu/pg2rs怀柔/ finished 2 works
+http://bj.lianjia.com/xiaoqu/pg1rs怀柔/ finished 30 works
+爬下了 怀柔 区全部的小区信息
+开始爬 密云 区全部的小区信息
+total number of xiaoqu is 48
+http://bj.lianjia.com/xiaoqu/pg2rs密云/ finished 18 works
+http://bj.lianjia.com/xiaoqu/pg1rs密云/ finished 30 works
+爬下了 密云 区全部的小区信息
+开始爬 延庆 区全部的小区信息
+total number of xiaoqu is 18
+http://bj.lianjia.com/xiaoqu/pg1rs延庆/ finished 18 works
+爬下了 延庆 区全部的小区信息
+开始爬 燕郊 区全部的小区信息
+total number of xiaoqu is 179
+http://bj.lianjia.com/xiaoqu/pg6rs燕郊/ finished 29 works
+http://bj.lianjia.com/xiaoqu/pg3rs燕郊/ finished 30 works
+http://bj.lianjia.com/xiaoqu/pg4rs燕郊/ finished 30 works
+http://bj.lianjia.com/xiaoqu/pg2rs燕郊/ finished 30 works
+http://bj.lianjia.com/xiaoqu/pg1rs燕郊/ finished 30 works
+http://bj.lianjia.com/xiaoqu/pg5rs燕郊/ finished 30 works
+爬下了 燕郊 区全部的小区信息
+
+
+
+
+xiaoqu_zufang_spider 10AM新坐标
+xiaoqu_zufang_spider 10号名邸
+xiaoqu_zufang_spider 11站
+xiaoqu_zufang_spider 198别墅区
+xiaoqu_zufang_spider 309医院家属楼
+xiaoqu_zufang_spider 10AM新坐标
