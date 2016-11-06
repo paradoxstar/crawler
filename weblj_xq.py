@@ -258,7 +258,7 @@ def area_xiaoqu_search(db_xq,region=u"昌平"):
     
     for i in range(total_pages):
         url_page = u"http://bj.lianjia.com/xiaoqu/pg%drs%s/" % (i + 1, region)
-        xiaoqu_page_search(db_xq, url_page))
+        xiaoqu_page_search(db_xq, url_page)
         
         print region + "  " + str(i) + "th page have been done"
 
