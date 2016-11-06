@@ -42,7 +42,7 @@ hds=[{'User-Agent':'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, l
     {'User-Agent':'Opera/9.80 (Windows NT 6.1; U; en) Presto/2.8.131 Version/11.11'}\
     ]
 
-storename = 'chengjiao' + time.strftime("%Y_%m_%d_%X", time.localtime())
+storename = 'chengjiao_' + time.strftime("%Y_%m_%d_%X", time.localtime())
 
 class SQLiteWraper(object):
     

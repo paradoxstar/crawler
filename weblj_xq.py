@@ -43,7 +43,7 @@ hds=[{'User-Agent':'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, l
     ]
 
 
-storename = 'xiaoqu' + time.strftime("%Y_%m_%d_%X", time.localtime())
+storename = 'xiaoqu_' + time.strftime("%Y_%m_%d_%X", time.localtime())
 
 
 class SQLiteWraper(object):
@@ -86,7 +86,7 @@ def gen_xiaoqu_insert_command(info_dict):
                 u'style',
                 u'buildyear',
                 u'tag',
-                u'totalPrice',
+                u'totalprice',
                 u'sellcount'
                 ]
     
@@ -165,23 +165,19 @@ def xiaoqu_page_search(db_xq,url_page=u"http://bj.lianjia.com/xiaoqu/pg1rs%E6%98
                 info_dict[u'chuzu'] = ""
 
             positioninfo = xq.find('div',{'class':'positionInfo'})
+            district = positioninfo.find('a', {'class': 'district'})
+            bizcircle = positioninfo.find('a', {'class': 'bizcircle'})
             posinfos = list(positioninfo.children)
-            if len(posinfos) == 4:
-                info_dict[u'district'] = posinfos[1].text
-                info_dict[u'bizcircle'] = posinfos[2].text
-                morinfo = posinfos[3].strip().strip('/').split('/')
-                if len(morinfo) == 2:
-                    info_dict[u'style'] = morinfo[0].strip()
-                    info_dict[u'buildyear'] = (morinfo[1].strip())[:4]
-                else:
-                    print "Unhealth record!"
-                    info_dict[u'style'] = morinfo
-                    info_dict[u'buildyear'] = ""
+            morinfo = posinfos[-1].strip().strip('/').split()
+            
+            info_dict[u'district'] = district.text
+            info_dict[u'bizcircle'] = bizcircle.text
+            if len(morinfo) == 2:
+                info_dict[u'style'] = morinfo[0].strip().strip('/')
+                info_dict[u'buildyear'] = (morinfo[1].strip())[:4]
             else:
                 print "Unhealth record!"
-                info_dict[u'district'] = positioninfo.text 
-                info_dict[u'bizcircle'] = ""
-                info_dict[u'style'] = ""
+                info_dict[u'style'] = morinfo
                 info_dict[u'buildyear'] = ""
 
             tag = xq.find('div', {'class': 'tagList'})
@@ -254,7 +250,7 @@ def area_xiaoqu_search(db_xq,region=u"昌平"):
     exec(d)
     total_pages = d['totalPage']
     
-    print u"total number of pages is " + str(total_page)
+    print u"total number of pages is " + str(total_pages)
     
     for i in range(total_pages):
         url_page = u"http://bj.lianjia.com/xiaoqu/pg%drs%s/" % (i + 1, region)
