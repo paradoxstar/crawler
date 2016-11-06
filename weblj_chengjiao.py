@@ -42,6 +42,7 @@ hds=[{'User-Agent':'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, l
     {'User-Agent':'Opera/9.80 (Windows NT 6.1; U; en) Presto/2.8.131 Version/11.11'}\
     ]
 
+storename = 'chengjiao' + time.strftime("%Y_%m_%d_%X", time.localtime())
 
 class SQLiteWraper(object):
     
@@ -99,8 +100,8 @@ def gen_chengjiao_insert_command(info_dict):
             t.append(info_dict[il])
         else:
             t.append('')
-    t=tuple(t)
-    command=(r"replace into chengjiao values(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)",t)
+    t = tuple(t)
+    command = (r"replace into chengjiao values(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)",t)
     return command
 
 
@@ -166,6 +167,7 @@ def chengjiao_page_search(db_cj, url):
                 info_dict[u'title'] = nameinfos[1]
                 info_dict[u'area'] = nameinfos[2]
             else:
+                print "Unhealth record!"
                 info_dict[u'xiaoqu'] = ""
                 info_dict[u'title'] = ""
                 info_dict[u'area'] = ""
@@ -180,6 +182,7 @@ def chengjiao_page_search(db_cj, url):
                 info_dict[u'decoration'] = hi[1]
                 info_dict[u'elevator'] = hi[2]
             else:
+                print "Unhealth record!"
                 info_dict[u'orientation'] = houseinfo.text
                 info_dict[u'decoration'] = ""
                 info_dict[u'elevator'] = ""
@@ -195,6 +198,7 @@ def chengjiao_page_search(db_cj, url):
                 info_dict[u'floor'] = pi[0]
                 info_dict[u'buildyear'] = pi[1]
             else:
+                print "Unhealth record!"
                 info_dict[u'floor'] = positioninfo.text
                 info_dict[u'buildyear'] = "" 
             info_dict[u'source'] = source.text 
@@ -353,7 +357,7 @@ def xiaoqu_chengjiao_spider(db_cj,xq_name=u"京师园"):
   
 
 def exception_write(e, fun_name,url):
-    f = open('log.txt','a')
+    f = open('log_' + storename + '.txt','a')
     line = "%s\t%s\t%s\n" % (e, fun_name, url)
     f.write(line)
     f.close()
@@ -362,7 +366,7 @@ def exception_write(e, fun_name,url):
 
 if __name__=="__main__":
     
-    db_cj=SQLiteWraper('lianjia-cj.db')
+    db_cj=SQLiteWraper(storename + '.db')
 
     create_command = """create table if not exists chengjiao 
                 (href TEXT, 

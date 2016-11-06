@@ -10,8 +10,10 @@
 #
 import os
 import re
+import socket
 import urllib2  
 import sqlite3
+import socket
 import random
 import threading
 from bs4 import BeautifulSoup
@@ -21,6 +23,7 @@ import time
 import sys
 reload(sys)
 sys.setdefaultencoding("utf-8")
+
 
 #Some User Agents
 hds=[{'User-Agent':'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/45.0.2454.101 Safari/537.36'},\
@@ -39,166 +42,280 @@ hds=[{'User-Agent':'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, l
     {'User-Agent':'Opera/9.80 (Windows NT 6.1; U; en) Presto/2.8.131 Version/11.11'}\
     ]
 
- 
-#北京区域列表
-regions=[u"东城",u"西城",u"朝阳",u"海淀",u"丰台",u"石景山",u"通州",u"昌平",u"大兴",u"亦庄开发区",u"顺义",u"房山",u"门头沟",u"平谷",u"怀柔",u"密云",u"延庆",u"燕郊"]
 
-lock = threading.Lock()
+storename = 'xiaoqu' + time.strftime("%Y_%m_%d_%X", time.localtime())
+
 
 class SQLiteWraper(object):
-    """
-    数据库的一个小封装，更好的处理多线程写入
-    """
-    def __init__(self,path,command='',*args,**kwargs):  
-        self.lock = threading.RLock() #锁  
-        self.path = path #数据库连接参数  
+    
+    def __init__(self,path,*args,**kwargs):  
+        self.lock = threading.RLock()   
+        self.path = path 
         
-        if command!='':
-            conn=self.get_conn()
-            cu=conn.cursor()
-            cu.execute(command)
-    
-    def get_conn(self):  
-        conn = sqlite3.connect(self.path)#,check_same_thread=False)  
-        conn.text_factory=str
-        return conn   
+        self.conn = sqlite3.connect(self.path)
+        self.conn.text_factory = str
+        self.cu = self.conn.cursor()
       
-    def conn_close(self,conn=None):  
-        conn.close()  
-    
-    def conn_trans(func):  
-        def connection(self,*args,**kwargs):  
-            self.lock.acquire()  
-            conn = self.get_conn()  
-            kwargs['conn'] = conn  
-            rs = func(self,*args,**kwargs)  
-            self.conn_close(conn)
-            self.lock.release()  
-            return rs  
-        return connection  
-    
-    @conn_trans    
-    def execute(self,command,method_flag=0,conn=None):  
-        cu = conn.cursor()
+    def close(self):  
+        self.conn.close()  
+
+    def execute(self,command):  
+        cu = self.cu
+        self.lock.acquire()
         try:
-            if not method_flag:
+            if isinstance(command, (str, unicode)):
                 cu.execute(command)
-            else:
+            elif len(command) == 2:
                 cu.execute(command[0],command[1])
-            conn.commit()
-        except sqlite3.IntegrityError,e:
-            #print e
-            return -1
-        except Exception, e:
-            print e
-            return -2
-        return 0
+            else:
+                raise ValueError("Invalid command")
+            self.conn.commit()
+        finally:
+            self.lock.release()
     
-    @conn_trans
-    def fetchall(self,command="select name from xiaoqu",conn=None):
-        cu=conn.cursor()
-        lists=[]
-        try:
-            cu.execute(command)
-            lists=cu.fetchall()
-        except Exception,e:
-            print e
-            pass
-        return lists
 
 
 def gen_xiaoqu_insert_command(info_dict):
-    """
-    生成小区数据库插入命令
-    """
-    info_list=[u'小区名称',u'大区域',u'小区域',u'小区户型',u'建造时间']
-    t=[]
+    
+    info_list = [u'href',
+                u'name',
+                u'chengjiao',
+                u'chuzu',
+                u'district',
+                u'bizcircle',
+                u'style',
+                u'buildyear',
+                u'tag',
+                u'totalPrice',
+                u'sellcount'
+                ]
+    
+    t = []
     for il in info_list:
         if il in info_dict:
             t.append(info_dict[il])
         else:
             t.append('')
-    t=tuple(t)
-    command=(r"insert into xiaoqu values(?,?,?,?,?)",t)
+    t = tuple(t)
+    command = (r"replace into xiaoqu values(?,?,?,?,?,?,?,?,?,?,?)",t)
     return command
 
 
 def xiaoqu_page_search(db_xq,url_page=u"http://bj.lianjia.com/xiaoqu/pg1rs%E6%98%8C%E5%B9%B3/"):
 
-    numworkdone = 0
-    try:
-        req = urllib2.Request(url_page,headers=hds[random.randint(0,len(hds)-1)])
-        source_code = urllib2.urlopen(req,timeout=10).read()
-        plain_text=unicode(source_code)#,errors='ignore')   
-        soup = BeautifulSoup(plain_text)
-    except (urllib2.HTTPError, urllib2.URLError), e:
-        print e
-        exit(-1)
-    except Exception,e:
-        print e
-        exit(-1)
+    trytimes = 0
+    while 1:
+        try:
+            req = urllib2.Request(url_page,headers=hds[random.randint(0,len(hds)-1)])
+            source_code = urllib2.urlopen(req,timeout=10).read()
+            plain_text=unicode(source_code)#,errors='ignore')   
+            soup = BeautifulSoup(plain_text)
+        except socket.timeout as e:
+            if trytimes < 5:
+                time.sleep(3)
+                trytimes += 1
+                continue
+            else:
+                print e
+                exception_write(e, 'xiaoqu_page_search', url)
+                return 
+        except (urllib2.HTTPError, urllib2.URLError) as e:
+            print e
+            exception_write(e, 'xiaoqu_page_search', url)
+            return 
+        except Exception as e:
+            print e
+            exception_write(e, 'xiaoqu_page_search', url)
+            return
+        
+        human = soup.find('div',{'class':'human'})
+        
+        if not human:
+            break
+        else:
+            print "block && wait"
+            time.sleep(600)
+            trytimes = 0
     
-    xiaoqu_list=soup.findAll('li',{'class':'clear'})
-    for xq in xiaoqu_list:
-        info_dict={}
-        info_dict.update({u'小区名称':xq.find('div', {'class':'title'}).text})
-        content = unicode(xq.find('div',{'class':'positionInfo'}).renderContents().strip())
-        info=re.match(r".+>(.+)</a>\xa0<.+>(.+)</a>\xa0(.+)\xa0(.+)",content)
-        info = info.groups()
-        info_dict.update({u'大区域':info[0]})
-        info_dict.update({u'小区域':info[1]})
-        info_dict.update({u'小区户型':info[2]})
-        info_dict.update({u'建造时间':info[3][:4]})
-        command=gen_xiaoqu_insert_command(info_dict)
-        db_xq.execute(command,1)
-        numworkdone += 1
+    xiaoqu_list = soup.findAll('li',{'class':'clear'})
+    
+    j = 0
+    for j in range(len(xiaoqu_list)):
+        xq = xiaoqu_list[j]
+        print j
+        try:
+            info_dict = {}
 
-    print "%s finished " % url_page + "%d works" % numworkdone
+            title = xq.find('div',{'class':'title'})
+            href = unicode(title.a['href'])
+            longname = title.text
+                
+            info_dict[u'href'] = href
+            info_dict[u'name'] = longname
+            
+            houseinfo = xq.find('div',{'class':'houseInfo'})
+            hi = houseinfo.text.replace(' ', '').split('|')
+           
+            if len(hi) == 2:
+                info_dict[u'chengjiao'] = hi[0]
+                info_dict[u'chuzu'] = hi[1]
+            else:
+                print "Unhealth record!"
+                info_dict[u'chengjiao'] = houseinfo.text
+                info_dict[u'chuzu'] = ""
+
+            positioninfo = xq.find('div',{'class':'positionInfo'})
+            posinfos = list(positioninfo.children)
+            if len(posinfos) == 4:
+                info_dict[u'district'] = posinfos[1].text
+                info_dict[u'bizcircle'] = posinfos[2].text
+                morinfo = posinfos[3].strip().strip('/').split('/')
+                if len(morinfo) == 2:
+                    info_dict[u'style'] = morinfo[0].strip()
+                    info_dict[u'buildyear'] = (morinfo[1].strip())[:4]
+                else:
+                    print "Unhealth record!"
+                    info_dict[u'style'] = morinfo
+                    info_dict[u'buildyear'] = ""
+            else:
+                print "Unhealth record!"
+                info_dict[u'district'] = positioninfo.text 
+                info_dict[u'bizcircle'] = ""
+                info_dict[u'style'] = ""
+                info_dict[u'buildyear'] = ""
+
+            tag = xq.find('div', {'class': 'tagList'})
+            info_dict[u'tag'] = tag.text
+
+            totalprice = xq.find('div', {'class': 'totalPrice'})
+            sellcount = xq.find('a', {'class': 'totalSellCount'})
+            info_dict[u'totalprice'] = totalprice.text[:-4]
+            info_dict[u'sellcount'] = sellcount.text[:-1]
+
+        except Exception as e:
+            print e
+            exception_write(e, 'xiaoqu_page_search', str(j))
+            continue
+
+        try:
+            command = gen_xiaoqu_insert_command(info_dict)
+            db_xq.execute(command)
+        except Exception as e:
+            print e
+            exception_write(e, 'xiaoqu_page_search_db', str(j))
+            continue
+
 
     
 def area_xiaoqu_search(db_xq,region=u"昌平"):
-    
+   
+    trytimes = 0
     url=u"http://bj.lianjia.com/xiaoqu/rs"+region+"/"
-    try:
-        req = urllib2.Request(url,headers=hds[random.randint(0,len(hds)-1)])
-        source_code = urllib2.urlopen(req,timeout=5).read()
-        plain_text=unicode(source_code)#,errors='ignore')   
-        soup = BeautifulSoup(plain_text)
-    except (urllib2.HTTPError, urllib2.URLError), e:
-        print e
-        return
-    except Exception,e:
-        print e
-        return
+    while 1:
+        try:
+            req = urllib2.Request(url,headers=hds[random.randint(0,len(hds)-1)])
+            source_code = urllib2.urlopen(req,timeout=5).read()
+            plain_text=unicode(source_code)#,errors='ignore')   
+            soup = BeautifulSoup(plain_text)
+        except socket.timeout as e:
+            if trytimes < 5:
+                time.sleep(2)
+                trytimes += 1
+                continue
+            else:
+                print e
+                exception_write(e, 'area_xiaoqu_search', xq_name)
+                return
+
+        except (urllib2.HTTPError, urllib2.URLError), e:
+            print e
+            exception_write(e, 'area_xiaoqu_search', xq_name)
+            return
+        except Exception,e:
+            print e
+            exception_write(e, 'area_xiaoqu_search', xq_name)
+            return
+        
+        human = soup.find('div',{'class':'human'})
+        
+        if not human:
+            break
+        else:
+            print "block! && wait"
+            time.sleep(600)
+            trytimes = 0
 
     xqtotal_num = int(soup.find('h2',{'class':'total fl'}).span.text.strip())
 
     print u"开始爬 %s 区全部的小区信息" % region
     print "total number of xiaoqu is " + str(xqtotal_num)
 
-    d="d="+soup.find('div',{'class':'page-box house-lst-page-box'}).get('page-data')
+    d = "d=" + soup.find('div',{'class':'page-box house-lst-page-box'}).get('page-data')
     exec(d)
-    total_pages=d['totalPage']
+    total_pages = d['totalPage']
     
-    threads=[]
+    print u"total number of pages is " + str(total_page)
+    
     for i in range(total_pages):
-        url_page=u"http://bj.lianjia.com/xiaoqu/pg%drs%s/" % (i+1,region)
-        t=threading.Thread(target=xiaoqu_page_search,args=(db_xq,url_page))
-        threads.append(t)
-    for t in threads:
-        t.start()
-    for t in threads:
-        t.join()
+        url_page = u"http://bj.lianjia.com/xiaoqu/pg%drs%s/" % (i + 1, region)
+        xiaoqu_page_search(db_xq, url_page))
+        
+        print region + "  " + str(i) + "th page have been done"
+
     print u"爬下了 %s 区全部的小区信息" % region
 
+
+
+def exception_write(e, fun_name,url):
+    f = open('log_' + storename + '.txt','a')
+    line = "%s\t%s\t%s\n" % (e, fun_name, url)
+    f.write(line)
+    f.close()
     
 
 if __name__=="__main__":
-    command="create table if not exists xiaoqu (name TEXT primary key UNIQUE, regionb TEXT, regions TEXT, style TEXT, year TEXT)"
-    db_xq=SQLiteWraper('lianjia-xq.db',command)
+    #北京区域列表
+    regions=[u"东城",
+            u"西城",
+            u"朝阳",
+            u"海淀",
+            u"丰台",
+            u"石景山",
+            u"通州",
+            u"昌平",
+            u"大兴",
+            u"亦庄开发区",
+            u"顺义",
+            u"房山",
+            u"门头沟",
+            u"平谷",
+            u"怀柔",
+            u"密云",
+            u"延庆",
+            u"燕郊"]
+
+    db_xq=SQLiteWraper(storename + '.db')
     
+    create_command = """create table if not exists xiaoqu 
+                (href TEXT primary key UNIQUE, 
+                name TEXT, 
+                chengjiao TEXT, 
+                chuzu TEXT, 
+                district TEXT, 
+                bizcircle TEXT, 
+                style TEXT, 
+                buildyear TEXT, 
+                tag TEXT, 
+                totalprice TEXT,
+                sellcount TEXT);"""
+    
+
+    db_xq.execute(create_command)
+
     #spider xiaoqu info
     for region in regions:
         area_xiaoqu_search(db_xq,region)
 
-    
+    db_xq.close()
+
+    print 'all done'

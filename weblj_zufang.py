@@ -42,6 +42,7 @@ hds=[{'User-Agent':'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, l
     ]
 
  
+storename = 'zufang' + time.strftime("%Y_%m_%d_%X", time.localtime())
 
 
 class SQLiteWraper(object):
@@ -77,13 +78,13 @@ def gen_zufang_insert_command(info_dict):
     
     info_list=[u'成交网页',u'小区名称',u'户型',u'租住面积',u'朝向',u'楼层',u'小区ID',u'签约日期',u'总层数',u'成交价',u'装修情况',u'数据来源']
 
-    t=[]
+    t = []
     for il in info_list:
         if il in info_dict:
             t.append(info_dict[il])
         else:
             t.append('')
-    t=tuple(t)
+    t = tuple(t)
     command=(r"insert into zufang values(?,?,?,?,?,?,?,?,?,?,?,?)",t)
     return command
 
@@ -100,7 +101,7 @@ def xiaoqu_zufang_spider(db_zf, xq_name = u"京师园"):
             soup = BeautifulSoup(plain_text)
         except socket.timeout as e:
             if trytimes < 5:
-                time.sleep(5)
+                time.sleep(2)
                 trytimes += 1
                 continue
             else:
@@ -159,7 +160,7 @@ def zufang_item_page(db_zf, url):
             soup = BeautifulSoup(plain_text)
         except socket.timeout as e:
             if trytimes < 5:
-                time.sleep(5)
+                time.sleep(2)
                 trytimes += 1
                 continue
             else:
@@ -206,7 +207,7 @@ def get_zufang_xiaoqu_data(db_zf, houseid, xiaoquid):
             alldata = json.loads(source_code)
         except socket.timeout as e:
             if trytimes < 5:
-                time.sleep(5)
+                time.sleep(2)
                 trytimes += 1
                 continue
             else:
@@ -255,6 +256,7 @@ def get_zufang_xiaoqu_data(db_zf, houseid, xiaoquid):
         try:
             db_zf.execute(command)
         except Exception as e:
+            print e
             exception_write(e, "get_zufang_xiaoqu_data", zfurl + "\t" + str(i))
 
 
