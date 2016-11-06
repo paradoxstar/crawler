@@ -357,7 +357,7 @@ def xiaoqu_chengjiao_spider(db_cj,xq_name=u"京师园"):
   
 
 def exception_write(e, fun_name,url):
-    f = open('log_' + storename + '.txt','a')
+    f = open(storename + '_log.txt','a')
     line = "%s\t%s\t%s\n" % (e, fun_name, url)
     f.write(line)
     f.close()

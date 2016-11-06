@@ -267,7 +267,7 @@ def area_xiaoqu_search(db_xq,region=u"昌平"):
 
 
 def exception_write(e, fun_name,url):
-    f = open('log_' + storename + '.txt','a')
+    f = open(storename + '_log.txt','a')
     line = "%s\t%s\t%s\n" % (e, fun_name, url)
     f.write(line)
     f.close()
@@ -307,7 +307,7 @@ if __name__=="__main__":
                 buildyear TEXT, 
                 tag TEXT, 
                 totalprice TEXT,
-                sellcount TEXT);"""
+                sellcount TEXT)"""
     
 
     db_xq.execute(create_command)

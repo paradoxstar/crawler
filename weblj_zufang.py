@@ -264,7 +264,7 @@ def get_zufang_xiaoqu_data(db_zf, houseid, xiaoquid):
   
 
 def exception_write(e, fun_name,url):
-    f = open('log.txt','a')
+    f = open(storename + '_log.txt','a')
     line="%s\t%s\t%s\n" % (e, fun_name,url)
     f.write(line)
     f.close()
@@ -273,7 +273,7 @@ def exception_write(e, fun_name,url):
 
 if __name__=="__main__":
   
-    db_zf = SQLiteWraper('lianjia-zf.db')
+    db_zf = SQLiteWraper(storename + '.db')
     
     create_command = """create table if not exists zufang 
                 (href TEXT primary key UNIQUE,
