@@ -260,20 +260,94 @@ def get_zufang_xiaoqu_data(db_zf, houseid, xiaoquid):
             exception_write(e, "get_zufang_xiaoqu_data", zfurl + "\t" + str(i))
 
 
-
-  
-
 def exception_write(e, fun_name,url):
     f = open(storename + '_log.txt','a')
     line="%s\t%s\t%s\n" % (e, fun_name,url)
     f.write(line)
     f.close()
 
+def excepthandle(db_cj):
+    xzs = [
+'尚西泊图',
+'展春园',
+'山水倾城',
+'山水巢东',
+'山水文园一期',
+'山水文园二期',
+'山水文园五期',
+'山水文园四期',
+'常秀家园',
+'常青园一区',
+'常青园北里',
+'常青藤嘉园',
+'帽儿胡同45号院',
+'干杨树',
+'干面胡同',
+'平乐园小区',
+'平原里小区',
+'平安嘉苑',
+'幸福二村',
+'幸福一村西里',
+'幸福东区',
+'幸福北里',
+'幸福南里',
+'幸福家园1号院',
+'幸福家园5号院',
+'幸福家园一期',
+'幸福家园二期',
+'幸福时光',
+'幸福艺居',
+'幸福西区',
+'幸福路6号院',
+'幻星家园',
+'广益大厦',
+'广义街10号院',
+'广义里小区',
+'广信嘉园',
+'广华轩',
+'广厦鑫苑',
+'广和东里',
+'广和里',
+'广外南街50号院',
+'广外南街63号院',
+'广宁村',
+'广安小区',
+'广安苑一期',
+'广安路54号院',
+'广安门内大街',
+'广安门北街',
+'广安门南街',
+'广安门外南街',
+'广安门外南街67号院',
+'广安门外大街',
+'广安门外车站东街',
+'广安门小区',
+'广安﹒康馨家园',
+'广泰小区',
+'广渠家园',
+'广渠路',
+'广渠门内大街',
+'广渠门外南街'
+]
+    zuip = [
+u'http://bj.lianjia.com/zufang/101100735278.html',
+u'http://bj.lianjia.com/zufang/101100776071.html',
+u'http://bj.lianjia.com/zufang/101100767239.html'
+]
+
+    for xq in xzs:
+        print 'begin spidering xiaoqu %s' % xq
+        xiaoqu_zufang_spider(db_cj, xq)
+
+    for cp in zuip:
+        print 'spider %s' % cp
+        zufang_item_page(db_cj, cp)
+
 
 
 if __name__=="__main__":
   
-    db_zf = SQLiteWraper(storename + '.db')
+    db_zf = SQLiteWraper('zufang.db')
     
     create_command = """create table if not exists zufang 
                 (href TEXT primary key UNIQUE,
@@ -300,6 +374,9 @@ if __name__=="__main__":
     
     #print xq_list[0]
     print "total number of xiaoqu is %d" % total
+    
+    #excepthandle(db_zf)
+    #print 'Exception handle done'
     
     for xq in xq_list:
         print 'begin spidering xiaoqu %s' % xq
