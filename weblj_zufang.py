@@ -69,6 +69,8 @@ class SQLiteWraper(object):
             else:
                 raise ValueError("Invalid command")
             self.conn.commit()
+        except sqlite3.IntegrityError:
+            pass
         finally:
             self.lock.release()
 
@@ -132,10 +134,11 @@ def xiaoqu_zufang_spider(db_zf, xq_name = u"京师园"):
         return
 
     records = soup.find('ul', {'id': 'house-lst'}).findAll('li')
+    xqn = xq_name.split('|')[0]
     found = 0
     for reco in records:
         ack = reco.find('div', {'class': 'where'}).a.text.strip()
-        if unicode(xq_name) == unicode(ack):
+        if unicode(xqn) == unicode(ack):
             found = 1
             break
 
@@ -366,7 +369,7 @@ if __name__=="__main__":
     db_zf.execute(create_command)
     
     xq_list=[]
-    xq = open("zufang_8_31_out_11_4_in.txt", "r")
+    xq = open("xiaoqu_2016_11_06_23_01_24_xiaoqu_district_list.txt", "r")
     for line in xq:
         xq_list.append(line.strip('\n'))
     xq.close()
