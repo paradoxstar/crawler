@@ -1,0 +1,9 @@
+<urlopen error [Errno -2] Name or service not known>	xiaoqu_zufang_spider	德胜门外大街115号|西城
+<urlopen error [Errno -2] Name or service not known>	xiaoqu_zufang_spider	金工宏洋大厦|西城
+HTTP Error 404: Not Found	xiaoqu_zufang_spider	泰福苑D2区|朝阳
+HTTP Error 404: Not Found	xiaoqu_zufang_spider	泰福苑D1区|朝阳
+HTTP Error 404: Not Found	xiaoqu_zufang_spider	泰福苑D3区|朝阳
+HTTP Error 404: Not Found	xiaoqu_zufang_spider	老虎庙|海淀
+No JSON object could be decoded	get_zufang_xiaoqu_data	http://bj.lianjia.com/zufang/housestat?hid=101100908182&rid=1111027381704
+No JSON object could be decoded	get_zufang_xiaoqu_data	http://bj.lianjia.com/zufang/housestat?hid=101100856438&rid=1111047645630
+HTTP Error 404: Not Found	xiaoqu_zufang_spider	三河润旭商贸中心|燕郊
