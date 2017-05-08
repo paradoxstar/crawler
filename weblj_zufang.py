@@ -403,7 +403,7 @@ if __name__=="__main__":
     for xq in xq_list:
         print 'begin spidering xiaoqu %s' % xq
         xiaoqu_zufang_spider(db_zf,xq)
-        time.sleep(random.randint(20, 30))
+        time.sleep(random.randint(20, 40))
 
     db_zf.close()
 

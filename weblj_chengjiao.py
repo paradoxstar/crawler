@@ -12,7 +12,7 @@
 import os
 import re
 import urllib2  
-import urllib  
+#import urllib  
 import socket
 import sqlite3
 import random
@@ -20,7 +20,7 @@ import threading
 from bs4 import BeautifulSoup
 import json
 import time
-import socket
+#import socket
 
 import sys
 reload(sys)
@@ -44,7 +44,7 @@ hds=[{'User-Agent':'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, l
     {'User-Agent':'Opera/9.80 (Windows NT 6.1; U; en) Presto/2.8.131 Version/11.11'}\
     ]
 
-proxys=[]
+#proxys=[]
 
 storename = 'chengjiao_' + time.strftime("%Y_%m_%d_%X", time.localtime())
 
@@ -75,33 +75,33 @@ class SQLiteWraper(object):
         finally:
             self.lock.release()
     
-def getProxyIp():
-    
-    proxys=[]
-    while len(proxys) == 0:
-        url = 'http://www.xicidaili.com/nn/'
-        req = urllib2.Request(url,headers=hds[random.randint(0,len(hds)-1)])
-        res = urllib2.urlopen(req).read()
-        soup = BeautifulSoup(res)
-        ips = soup.findAll('tr')
-    
-        url = "http://ip.chinaz.com/getip.aspx"  #用来测试IP是否可用的url  
-        socket.setdefaulttimeout(1)
-        for x in range(1,len(ips)):
-            try:  
-                ip = ips[x]
-                tds = ip.findAll("td")
-                proxy_host = "http://"+tds[1].contents[0]+":"+tds[2].contents[0]
-                proxy_temp = {"http":proxy_host}
-                res = urllib.urlopen(url,proxies=proxy_temp).read()
-                print proxy_temp
-                proxys.append(proxy_temp)
-            except Exception, e:  
-                print e
-                continue
-        time.sleep(10)
-
-    print 'found %d proxies' % len(proxys)  
+#def getProxyIp():
+#    
+#    proxys=[]
+#    while len(proxys) == 0:
+#        url = 'http://www.xicidaili.com/nn/'
+#        req = urllib2.Request(url,headers=hds[random.randint(0,len(hds)-1)])
+#        res = urllib2.urlopen(req).read()
+#        soup = BeautifulSoup(res)
+#        ips = soup.findAll('tr')
+#    
+#        url = "http://ip.chinaz.com/getip.aspx"  #用来测试IP是否可用的url  
+#        socket.setdefaulttimeout(1)
+#        for x in range(1,len(ips)):
+#            try:  
+#                ip = ips[x]
+#                tds = ip.findAll("td")
+#                proxy_host = "http://"+tds[1].contents[0]+":"+tds[2].contents[0]
+#                proxy_temp = {"http":proxy_host}
+#                res = urllib.urlopen(url,proxies=proxy_temp).read()
+#                print proxy_temp
+#                proxys.append(proxy_temp)
+#            except Exception, e:  
+#                print e
+#                continue
+#        time.sleep(10)
+#
+#    print 'found %d proxies' % len(proxys)  
 
 def gen_chengjiao_insert_command(info_dict):
     
@@ -138,19 +138,19 @@ def gen_chengjiao_insert_command(info_dict):
 
 def chengjiao_page_search(db_cj, url):
     trytimes = 0
-    tryblocktimes = 0
+#    tryblocktimes = 0
     while 1:
         try:
-            proxy_s = urllib2.ProxyHandler(proxys[random.randint(0, len(proxys)-1)])
-            opener = urllib2.build_opener(proxy_s)
-            urllib2.install_opener(opener) 
+#            proxy_s = urllib2.ProxyHandler(proxys[random.randint(0, len(proxys)-1)])
+#            opener = urllib2.build_opener(proxy_s)
+#            urllib2.install_opener(opener) 
             req = urllib2.Request(url,headers=hds[random.randint(0,len(hds)-1)])
             source_code = urllib2.urlopen(req,timeout=10).read()
             plain_text=unicode(source_code)#,errors='ignore')   
             soup = BeautifulSoup(plain_text)
         except socket.timeout as e:
             if trytimes < 5:
-                #time.sleep(3)
+                time.sleep(3)
                 trytimes += 1
                 continue
             else:
@@ -171,14 +171,17 @@ def chengjiao_page_search(db_cj, url):
         if not human:
             break
         else:
-            if tryblocktimes < 5:
-                tryblocktimes += 1
-                continue
-            else:
-                print "block"
-                getProxyIp();
-                trytimes = 0
-                tryblocktimes = 0
+            print "block"
+            time.sleep(random.randint(900, 1200))
+            trytimes = 0
+#            if tryblocktimes < 5:
+#                tryblocktimes += 1
+#                continue
+#            else:
+#                print "block"
+#                getProxyIp();
+#                trytimes = 0
+#                tryblocktimes = 0
 
     thispagelist = soup.find('ul',{'class':'listContent'}).findAll('li')
    
@@ -354,13 +357,13 @@ def chengjiao_item_page(url):
 def xiaoqu_chengjiao_spider(db_cj,xq_name=u"京师园"):
     
     trytimes = 0
-    tryblocktimes = 0
+#    tryblocktimes = 0
     url=u"http://bj.lianjia.com/chengjiao/rs"+urllib2.quote(xq_name)+"/"
     while 1:
         try:
-            proxy_s = urllib2.ProxyHandler(proxys[random.randint(0, len(proxys)-1)])
-            opener = urllib2.build_opener(proxy_s)
-            urllib2.install_opener(opener) 
+#            proxy_s = urllib2.ProxyHandler(proxys[random.randint(0, len(proxys)-1)])
+#            opener = urllib2.build_opener(proxy_s)
+#            urllib2.install_opener(opener) 
             req = urllib2.Request(url,headers=hds[random.randint(0,len(hds)-1)])
             source_code = urllib2.urlopen(req,timeout=10).read()
             plain_text=unicode(source_code)#,errors='ignore')   
@@ -389,14 +392,17 @@ def xiaoqu_chengjiao_spider(db_cj,xq_name=u"京师园"):
         if not human:
             break
         else:
-            if tryblocktimes < 5:
-                tryblocktimes += 1
-                continue
-            else:
-                print "block"
-                getProxyIp();
-                trytimes = 0
-                tryblocktimes = 0
+            print "block"
+            time.sleep(random.randint(900, 1200))
+            trytimes = 0
+#            if tryblocktimes < 5:
+#                tryblocktimes += 1
+#                continue
+#            else:
+#                print "block"
+#                getProxyIp();
+#                trytimes = 0
+#                tryblocktimes = 0
 
     pagebox = soup.find('div',{'class':'page-box house-lst-page-box'})
     if not pagebox:
@@ -517,7 +523,7 @@ if __name__=="__main__":
     #excepthandle(db_cj)
     #print 'Exception handle done'
 
-    getProxyIp()
+    #getProxyIp()
 
     for xq in xq_list:
         print 'begin spidering xiaoqu %s' % xq
