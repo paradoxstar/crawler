@@ -1,7 +1,0 @@
-No JSON object could be decoded	get_zufang_xiaoqu_data	http://bj.lianjia.com/zufang/housestat?hid=101100869033&rid=1111027376516
-<urlopen error timed out>	xiaoqu_zufang_spider	国惠村|昌平
-<urlopen error [Errno -2] Name or service not known>	xiaoqu_zufang_spider	创新路2号院|昌平
-<urlopen error timed out>	xiaoqu_zufang_spider	政府街酒厂综合楼|昌平
-<urlopen error timed out>	xiaoqu_zufang_spider	新郝家园|昌平
-<urlopen error timed out>	xiaoqu_zufang_spider	钰阳阁|昌平
-HTTP Error 404: Not Found	xiaoqu_zufang_spider	三河润旭商贸中心|燕郊

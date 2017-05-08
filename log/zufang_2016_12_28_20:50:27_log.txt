@@ -1,4 +1,0 @@
-No JSON object could be decoded	get_zufang_xiaoqu_data	http://bj.lianjia.com/zufang/housestat?hid=101100960600&rid=1111046173187
-No JSON object could be decoded	get_zufang_xiaoqu_data	http://bj.lianjia.com/zufang/housestat?hid=101100976804&rid=1111027377484
-No JSON object could be decoded	get_zufang_xiaoqu_data	http://bj.lianjia.com/zufang/housestat?hid=101100937811&rid=1111027378379
-No JSON object could be decoded	get_zufang_xiaoqu_data	http://bj.lianjia.com/zufang/housestat?hid=101100947956&rid=1111027373738

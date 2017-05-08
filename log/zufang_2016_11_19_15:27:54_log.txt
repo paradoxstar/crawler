@@ -1,9 +1,0 @@
-No JSON object could be decoded	get_zufang_xiaoqu_data	http://bj.lianjia.com/zufang/housestat?hid=BJ0002229827&rid=1111027379400
-No JSON object could be decoded	get_zufang_xiaoqu_data	http://bj.lianjia.com/zufang/housestat?hid=101100819806&rid=1111027374856
-HTTP Error 404: Not Found	xiaoqu_zufang_spider	泰福苑D2区|朝阳
-HTTP Error 404: Not Found	xiaoqu_zufang_spider	泰福苑D1区|朝阳
-HTTP Error 404: Not Found	xiaoqu_zufang_spider	泰福苑D3区|朝阳
-HTTP Error 404: Not Found	xiaoqu_zufang_spider	老虎庙|海淀
-No JSON object could be decoded	get_zufang_xiaoqu_data	http://bj.lianjia.com/zufang/housestat?hid=101100840252&rid=1111027377908
-No JSON object could be decoded	get_zufang_xiaoqu_data	http://bj.lianjia.com/zufang/housestat?hid=101100758691&rid=1111027379614
-HTTP Error 404: Not Found	xiaoqu_zufang_spider	三河润旭商贸中心|燕郊

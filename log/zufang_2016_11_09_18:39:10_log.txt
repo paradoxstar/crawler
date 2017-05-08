@@ -1,8 +1,0 @@
-<urlopen error [Errno -2] Name or service not known>	xiaoqu_zufang_spider	春风胡同社区|西城
-<urlopen error [Errno -2] Name or service not known>	xiaoqu_zufang_spider	凯迪尚府|西城
-HTTP Error 404: Not Found	xiaoqu_zufang_spider	泰福苑D2区|朝阳
-HTTP Error 404: Not Found	xiaoqu_zufang_spider	泰福苑D1区|朝阳
-HTTP Error 404: Not Found	xiaoqu_zufang_spider	泰福苑D3区|朝阳
-No JSON object could be decoded	get_zufang_xiaoqu_data	http://bj.lianjia.com/zufang/housestat?hid=101100769799&rid=1111027379497
-HTTP Error 404: Not Found	xiaoqu_zufang_spider	老虎庙|海淀
-HTTP Error 404: Not Found	xiaoqu_zufang_spider	三河润旭商贸中心|燕郊

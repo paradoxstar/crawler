@@ -1,1 +1,0 @@
-<urlopen error [Errno -2] Name or service not known>	get_zufang_xiaoqu_data	http://bj.lianjia.com/zufang/housestat?hid=101100847592&rid=1111027376503
