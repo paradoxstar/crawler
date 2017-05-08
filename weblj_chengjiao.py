@@ -12,6 +12,7 @@
 import os
 import re
 import urllib2  
+import urllib  
 import socket
 import sqlite3
 import random
@@ -19,6 +20,7 @@ import threading
 from bs4 import BeautifulSoup
 import json
 import time
+import socket
 
 import sys
 reload(sys)
@@ -41,6 +43,8 @@ hds=[{'User-Agent':'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, l
     {'User-Agent':'Opera/9.80 (Macintosh; Intel Mac OS X 10.6.8; U; en) Presto/2.8.131 Version/11.11'},\
     {'User-Agent':'Opera/9.80 (Windows NT 6.1; U; en) Presto/2.8.131 Version/11.11'}\
     ]
+
+proxys=[]
 
 storename = 'chengjiao_' + time.strftime("%Y_%m_%d_%X", time.localtime())
 
@@ -71,8 +75,33 @@ class SQLiteWraper(object):
         finally:
             self.lock.release()
     
+def getProxyIp():
+    
+    proxys=[]
+    while len(proxys) == 0:
+        url = 'http://www.xicidaili.com/nn/'
+        req = urllib2.Request(url,headers=hds[random.randint(0,len(hds)-1)])
+        res = urllib2.urlopen(req).read()
+        soup = BeautifulSoup(res)
+        ips = soup.findAll('tr')
+    
+        url = "http://ip.chinaz.com/getip.aspx"  #用来测试IP是否可用的url  
+        socket.setdefaulttimeout(1)
+        for x in range(1,len(ips)):
+            try:  
+                ip = ips[x]
+                tds = ip.findAll("td")
+                proxy_host = "http://"+tds[1].contents[0]+":"+tds[2].contents[0]
+                proxy_temp = {"http":proxy_host}
+                res = urllib.urlopen(url,proxies=proxy_temp).read()
+                print proxy_temp
+                proxys.append(proxy_temp)
+            except Exception, e:  
+                print e
+                continue
+        time.sleep(10)
 
-
+    print 'found %d proxies' % len(proxys)  
 
 def gen_chengjiao_insert_command(info_dict):
     
@@ -91,7 +120,9 @@ def gen_chengjiao_insert_command(info_dict):
                 u'title',
                 u'totalprice',
                 u'unitprice',
-                u'xiaoqu'
+                u'xiaoqu',
+                u'guapai',
+                u'cjcycle'
                 ]
 
     t = []
@@ -101,21 +132,25 @@ def gen_chengjiao_insert_command(info_dict):
         else:
             t.append('')
     t = tuple(t)
-    command = (r"insert into chengjiao values(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)",t)
+    command = (r"insert into chengjiao values(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)",t)
     return command
 
 
 def chengjiao_page_search(db_cj, url):
     trytimes = 0
+    tryblocktimes = 0
     while 1:
         try:
+            proxy_s = urllib2.ProxyHandler(proxys[random.randint(0, len(proxys)-1)])
+            opener = urllib2.build_opener(proxy_s)
+            urllib2.install_opener(opener) 
             req = urllib2.Request(url,headers=hds[random.randint(0,len(hds)-1)])
             source_code = urllib2.urlopen(req,timeout=10).read()
             plain_text=unicode(source_code)#,errors='ignore')   
             soup = BeautifulSoup(plain_text)
         except socket.timeout as e:
             if trytimes < 5:
-                time.sleep(3)
+                #time.sleep(3)
                 trytimes += 1
                 continue
             else:
@@ -136,11 +171,15 @@ def chengjiao_page_search(db_cj, url):
         if not human:
             break
         else:
-            print "block && wait"
-            time.sleep(600)
-            trytimes = 0
-    
-     
+            if tryblocktimes < 5:
+                tryblocktimes += 1
+                continue
+            else:
+                print "block"
+                getProxyIp();
+                trytimes = 0
+                tryblocktimes = 0
+
     thispagelist = soup.find('ul',{'class':'listContent'}).findAll('li')
    
     j = 0
@@ -219,20 +258,41 @@ def chengjiao_page_search(db_cj, url):
             else:
                 info_dict[u'fangben'] = ""
                 info_dict[u'tag'] = dealhouseplaintxt
+            
+            dealCycleitem = cjitem.find('div', {'class':'dealCycleeInfo'})
+            if not dealCycleitem:
+                dealCycletxts = {}
+                dealCycleplaintxt = ""
+            else:
+                dealCycleeinfo = dealCycleitem.find('span', {'class': 'dealCycleTxt'})
+                if not dealCycleeinfo:
+                    dealCycletxts = {}
+                    dealCycleplaintxt = ""
+                else:
+                    dealCycletxts = dealCycleeinfo.findAll('span')
+                    dealCycleplaintxt = dealCycleeinfo.text
+
+            if len(dealCycletxts) == 2:
+                info_dict[u'guapai'] = dealCycletxts[0].text
+                info_dict[u'cjcycle'] = dealCycletxts[1].text
+            else:
+                info_dict[u'cjcycle'] = ""
+                info_dict[u'guapai'] = dealCycleplaintxt
 
         except Exception as e:
             print e
             exception_write(e, 'chengjiao_item_page_list', str(j))
             continue
-
+##############################################3
         #try:
         #    moreinfo = chengjiao_item_page(info_dict[u'href'])
         #except Exception as e:
         #    print e
         #    exception_write(e, 'chengjiao_item_page', info_dict[u'href'])
         #    continue
-        #
+        
         #info_dict.update(moreinfo)
+################################################
         try:
             command = gen_chengjiao_insert_command(info_dict)
             db_cj.execute(command)
@@ -294,16 +354,20 @@ def chengjiao_item_page(url):
 def xiaoqu_chengjiao_spider(db_cj,xq_name=u"京师园"):
     
     trytimes = 0
+    tryblocktimes = 0
     url=u"http://bj.lianjia.com/chengjiao/rs"+urllib2.quote(xq_name)+"/"
     while 1:
         try:
+            proxy_s = urllib2.ProxyHandler(proxys[random.randint(0, len(proxys)-1)])
+            opener = urllib2.build_opener(proxy_s)
+            urllib2.install_opener(opener) 
             req = urllib2.Request(url,headers=hds[random.randint(0,len(hds)-1)])
             source_code = urllib2.urlopen(req,timeout=10).read()
             plain_text=unicode(source_code)#,errors='ignore')   
             soup = BeautifulSoup(plain_text)
         except socket.timeout as e:
             if trytimes < 5:
-                time.sleep(5)
+                #time.sleep(5)
                 trytimes += 1
                 continue
             else:
@@ -325,10 +389,14 @@ def xiaoqu_chengjiao_spider(db_cj,xq_name=u"京师园"):
         if not human:
             break
         else:
-            print "block && wait"
-            time.sleep(600)
-            trytimes = 0
-
+            if tryblocktimes < 5:
+                tryblocktimes += 1
+                continue
+            else:
+                print "block"
+                getProxyIp();
+                trytimes = 0
+                tryblocktimes = 0
 
     pagebox = soup.find('div',{'class':'page-box house-lst-page-box'})
     if not pagebox:
@@ -428,13 +496,16 @@ if __name__=="__main__":
                 title TEXT,
                 totalprice TEXT,
                 unitprice TEXT,
-                xiaoqu TEXT)"""
+                xiaoqu TEXT,
+                guapai TEXT,
+                cjcycle TEXT)"""
 
 
     db_cj.execute(create_command)
    
     xq_list=[]
-    xq = open("xq_trade_list_11_1_from_dong.txt", "r")
+    xq = open("xiaoqu_2016_11_06_23_01_24_xiaoqu_district_list.txt", "r")
+    #xq = open("xq_trade_list_11_1_from_dong.txt", "r")
     for line in xq:
         xq_list.append(line.strip('\r\n')) 
     xq.close()
@@ -446,10 +517,12 @@ if __name__=="__main__":
     #excepthandle(db_cj)
     #print 'Exception handle done'
 
+    getProxyIp()
+
     for xq in xq_list:
         print 'begin spidering xiaoqu %s' % xq
         xiaoqu_chengjiao_spider(db_cj, xq)
-        #time.sleep(random.randint(8,10))
+        time.sleep(random.randint(5,10))
 
     db_cj.close()
 

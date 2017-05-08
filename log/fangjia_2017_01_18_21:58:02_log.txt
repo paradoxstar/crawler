@@ -1,0 +1,7 @@
+HTTP Error 404: Not Found	xiaoqu_fangjia_spider	泰福苑D2区|朝阳
+HTTP Error 404: Not Found	xiaoqu_fangjia_spider	泰福苑D1区|朝阳
+HTTP Error 404: Not Found	xiaoqu_fangjia_spider	泰福苑D3区|朝阳
+HTTP Error 404: Not Found	xiaoqu_fangjia_spider	老虎庙|海淀
+HTTP Error 504: GATEWAY_TIMEOUT	xiaoqu_fangjia_spider	丞泰快捷酒店|丰台
+HTTP Error 504: GATEWAY_TIMEOUT	xiaoqu_fangjia_spider	模式口中里|石景山
+HTTP Error 404: Not Found	xiaoqu_fangjia_spider	三河润旭商贸中心|燕郊

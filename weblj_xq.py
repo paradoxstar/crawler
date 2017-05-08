@@ -101,7 +101,7 @@ def gen_xiaoqu_insert_command(info_dict):
     return command
 
 
-def xiaoqu_page_search(db_xq,url_page=u"http://bj.lianjia.com/xiaoqu/pg1rs%E6%98%8C%E5%B9%B3/"):
+def xiaoqu_page_search(db_xq,url_page=u"http://bj.lianjia.com/xiaoqu/dongcheng/pg1/"):
 
     trytimes = 0
     while 1:
@@ -142,7 +142,6 @@ def xiaoqu_page_search(db_xq,url_page=u"http://bj.lianjia.com/xiaoqu/pg1rs%E6%98
     j = 0
     for j in range(len(xiaoqu_list)):
         xq = xiaoqu_list[j]
-        print j
         try:
             info_dict = {}
 
@@ -151,37 +150,41 @@ def xiaoqu_page_search(db_xq,url_page=u"http://bj.lianjia.com/xiaoqu/pg1rs%E6%98
             longname = title.text
                 
             info_dict[u'href'] = href
-            info_dict[u'name'] = longname
+            info_dict[u'name'] = longname.strip()
             
             houseinfo = xq.find('div',{'class':'houseInfo'})
-            hi = houseinfo.text.replace(' ', '').split('|')
+            hi = houseinfo.text.replace(' ', '').strip().split('|')
            
             if len(hi) == 2:
-                info_dict[u'chengjiao'] = hi[0]
-                info_dict[u'chuzu'] = hi[1]
+                info_dict[u'chengjiao'] = hi[0].strip()
+                info_dict[u'chuzu'] = hi[1].strip()
+            elif len(hi) == 3:
+                print "more than chengjiao && chuzu"
+                info_dict[u'chengjiao'] = hi[1].strip()
+                info_dict[u'chuzu'] = hi[2].strip()
             else:
-                print "Unhealth record!"
-                info_dict[u'chengjiao'] = houseinfo.text
+                print "miss chengjiao && chuzu!"
+                info_dict[u'chengjiao'] = houseinfo.text.replace(' ', '').strip()
                 info_dict[u'chuzu'] = ""
 
             positioninfo = xq.find('div',{'class':'positionInfo'})
             district = positioninfo.find('a', {'class': 'district'})
             bizcircle = positioninfo.find('a', {'class': 'bizcircle'})
             posinfos = list(positioninfo.children)
-            morinfo = posinfos[-1].strip().strip('/').split()
+            morinfo = posinfos[-1].strip().strip('/').split('\n')
             
-            info_dict[u'district'] = district.text
-            info_dict[u'bizcircle'] = bizcircle.text
+            info_dict[u'district'] = district.text.strip()
+            info_dict[u'bizcircle'] = bizcircle.text.strip()
             if len(morinfo) == 2:
-                info_dict[u'style'] = morinfo[0].strip().strip('/')
-                info_dict[u'buildyear'] = (morinfo[1].strip())[:4]
+                info_dict[u'style'] = morinfo[0].strip().strip('/').strip()
+                info_dict[u'buildyear'] = (morinfo[1].strip().strip('/').strip())[:4]
             else:
-                print "Unhealth record!"
-                info_dict[u'style'] = morinfo
+                print "miss style && build year!"
+                info_dict[u'style'] = morinfo.strip()
                 info_dict[u'buildyear'] = ""
 
             tag = xq.find('div', {'class': 'tagList'})
-            info_dict[u'tag'] = tag.text
+            info_dict[u'tag'] = tag.text.strip()
 
             totalprice = xq.find('div', {'class': 'totalPrice'})
             sellcount = xq.find('a', {'class': 'totalSellCount'})
@@ -192,7 +195,8 @@ def xiaoqu_page_search(db_xq,url_page=u"http://bj.lianjia.com/xiaoqu/pg1rs%E6%98
             print e
             exception_write(e, 'xiaoqu_page_search', str(j))
             continue
-
+        
+        print j
         try:
             command = gen_xiaoqu_insert_command(info_dict)
             db_xq.execute(command)
@@ -203,10 +207,10 @@ def xiaoqu_page_search(db_xq,url_page=u"http://bj.lianjia.com/xiaoqu/pg1rs%E6%98
 
 
     
-def area_xiaoqu_search(db_xq,region=u"昌平"):
+def area_xiaoqu_search(db_xq,region=u"dongcheng"):
    
     trytimes = 0
-    url=u"http://bj.lianjia.com/xiaoqu/rs"+region+"/"
+    url=u"http://bj.lianjia.com/xiaoqu/"+region+"/"
     while 1:
         try:
             req = urllib2.Request(url,headers=hds[random.randint(0,len(hds)-1)])
@@ -253,7 +257,7 @@ def area_xiaoqu_search(db_xq,region=u"昌平"):
     print u"total number of pages is " + str(total_pages)
     
     for i in range(total_pages):
-        url_page = u"http://bj.lianjia.com/xiaoqu/pg%drs%s/" % (i + 1, region)
+        url_page = u"http://bj.lianjia.com/xiaoqu/%s/pg%d/" % (region, i + 1)
         xiaoqu_page_search(db_xq, url_page)
         
         print region + "  " + str(i) + "th page have been done"
@@ -271,24 +275,24 @@ def exception_write(e, fun_name,url):
 
 if __name__=="__main__":
     #北京区域列表
-    regions=[u"东城",
-            u"西城",
-            u"朝阳",
-            u"海淀",
-            u"丰台",
-            u"石景山",
-            u"通州",
-            u"昌平",
-            u"大兴",
-            u"亦庄开发区",
-            u"顺义",
-            u"房山",
-            u"门头沟",
-            u"平谷",
-            u"怀柔",
-            u"密云",
-            u"延庆",
-            u"燕郊"]
+    regions=[u"dongcheng",
+            u"xicheng",
+            u"chaoyang",
+            u"haidian",
+            u"fengtai",
+            u"shijingshan",
+            u"tongzhou",
+            u"changping",
+            u"daxing",
+            u"yizhuangkaifaqu",
+            u"shunyi",
+            u"fangshan",
+            u"mentougou",
+            u"pinggu",
+            u"huairou",
+            u"miyun",
+            u"yanqing",
+            u"yanjiao"]
 
     db_xq=SQLiteWraper(storename + '.db')
     

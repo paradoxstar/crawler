@@ -12,12 +12,14 @@ import os
 import re
 import socket
 import urllib2  
+#import urllib  
 import sqlite3
 import random
 import threading
 from bs4 import BeautifulSoup
 import json
 import time
+#import socket
 
 import sys
 reload(sys)
@@ -26,6 +28,7 @@ sys.setdefaultencoding("utf-8")
 
 #Some User Agents
 hds=[{'User-Agent':'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/45.0.2454.101 Safari/537.36'},\
+    {'User-Agent':'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:49.0) Gecko/20100101 Firefox/49.0'},\
     {'User-Agent':'Mozilla/5.0 (Windows; U; Windows NT 6.1; en-US; rv:1.9.1.6) Gecko/20091201 Firefox/3.5.6'},\
     {'User-Agent':'Mozilla/5.0 (Windows NT 6.2) AppleWebKit/535.11 (KHTML, like Gecko) Chrome/17.0.963.12 Safari/535.11'},\
     {'User-Agent':'Mozilla/5.0 (compatible; MSIE 10.0; Windows NT 6.2; Trident/6.0)'},\
@@ -42,6 +45,8 @@ hds=[{'User-Agent':'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, l
     ]
 
  
+#proxys=[]
+
 storename = 'zufang_' + time.strftime("%Y_%m_%d_%X", time.localtime())
 
 
@@ -74,6 +79,36 @@ class SQLiteWraper(object):
         finally:
             self.lock.release()
 
+#def getProxyIp():
+#    global proxys
+#    proxys=[]
+#    while len(proxys) == 0:
+#        url = 'http://www.xicidaili.com/nn/'
+#        req = urllib2.Request(url,headers=hds[random.randint(0,len(hds)-1)])
+#        res = urllib2.urlopen(req).read()
+#        soup = BeautifulSoup(res)
+#        ips = soup.findAll('tr')
+#    
+#        url = "http://ip.chinaz.com/getip.aspx"  #用来测试IP是否可用的url  
+#        socket.setdefaulttimeout(1)
+#        for x in range(1,len(ips)):
+#            try:  
+#                ip = ips[x]
+#                tds = ip.findAll("td")
+#                proxy_host = "http://"+tds[1].contents[0]+":"+tds[2].contents[0]
+#                proxy_temp = {"http":proxy_host}
+#                res = urllib.urlopen(url,proxies=proxy_temp).read()
+#		if res[1:3] == "ip":
+#		    print proxy_temp
+#                    proxys.append(proxy_temp)
+#                else:
+#                    continue
+#            except Exception, e:  
+#                print e
+#                continue
+#        time.sleep(10)
+#
+#    print 'found %d proxies' % len(proxys)  
 
 
 def gen_zufang_insert_command(info_dict):
@@ -94,9 +129,13 @@ def gen_zufang_insert_command(info_dict):
 def xiaoqu_zufang_spider(db_zf, xq_name = u"京师园"):
   
     trytimes = 0
+#    tryblocktimes = 0
     url=u"http://bj.lianjia.com/zufang/rs"+urllib2.quote(xq_name)+"/"
     while 1:
         try:
+#            proxy_s = urllib2.ProxyHandler(proxys[random.randint(0, len(proxys)-1)])
+#            opener = urllib2.build_opener(proxy_s)
+#            urllib2.install_opener(opener) 
             req = urllib2.Request(url,headers=hds[random.randint(0,len(hds)-1)])
             source_code = urllib2.urlopen(req,timeout=10).read()
             plain_text=unicode(source_code)#,errors='ignore')   
@@ -123,9 +162,17 @@ def xiaoqu_zufang_spider(db_zf, xq_name = u"京师园"):
         if not human:
             break
         else:
-            print "block! && wait"
-            time.sleep(600)
+            print "block"
+            time.sleep(random.randint(900, 1200))
             trytimes = 0
+#            if tryblocktimes < 5:
+#                tryblocktimes += 1
+#                continue
+#            else:
+#                print "block"
+#                getProxyIp();
+#                trytimes = 0
+#                tryblocktimes = 0
     
 
     record = soup.find('li',{'data-index':'0'})        
@@ -155,8 +202,12 @@ def xiaoqu_zufang_spider(db_zf, xq_name = u"京师园"):
 def zufang_item_page(db_zf, url):
     
     trytimes = 0
+#    tryblocktimes = 0
     while 1:
         try:
+#            proxy_s = urllib2.ProxyHandler(proxys[random.randint(0, len(proxys)-1)])
+#            opener = urllib2.build_opener(proxy_s)
+#            urllib2.install_opener(opener) 
             req = urllib2.Request(url,headers=hds[random.randint(0,len(hds)-1)])
             source_code = urllib2.urlopen(req,timeout=10).read()
             plain_text=unicode(source_code)#,errors='ignore')   
@@ -183,9 +234,17 @@ def zufang_item_page(db_zf, url):
         if not human:
             break
         else:
-            print "block! && wait"
-            time.sleep(600)
+            print "block"
+            time.sleep(random.randint(900, 1200))
             trytimes = 0
+#            if tryblocktimes < 5:
+#                tryblocktimes += 1
+#                continue
+#            else:
+#                print "block"
+#                getProxyIp();
+#                trytimes = 0
+#                tryblocktimes = 0
     
     zufang_list = soup.find('div',{'class':'dealRecord'})
     if not zufang_list:
@@ -203,14 +262,18 @@ def get_zufang_xiaoqu_data(db_zf, houseid, xiaoquid):
     
     zfurl = "http://bj.lianjia.com/zufang/housestat?hid=%s&rid=%s" %(houseid, xiaoquid)
     trytimes = 0
+#    tryblocktimes = 0
     while 1:
         try:
+#            proxy_s = urllib2.ProxyHandler(proxys[random.randint(0, len(proxys)-1)])
+#            opener = urllib2.build_opener(proxy_s)
+#            urllib2.install_opener(opener) 
             req = urllib2.Request(zfurl,headers=hds[random.randint(0,len(hds)-1)])
             source_code = urllib2.urlopen(req,timeout=10).read()
             alldata = json.loads(source_code)
         except socket.timeout as e:
             if trytimes < 5:
-                time.sleep(2)
+                #time.sleep(2)
                 trytimes += 1
                 continue
             else:
@@ -229,9 +292,18 @@ def get_zufang_xiaoqu_data(db_zf, houseid, xiaoquid):
         if alldata.has_key('data'):
             break
         else:
-            print "block! && wait"
-            time.sleep(600)
+            print "block"
+            time.sleep(random.randint(900, 1200))
             trytimes = 0
+            
+#            if tryblocktimes < 5:
+#                tryblocktimes += 1
+#                continue
+#            else:
+#                print "block"
+#                getProxyIp();
+#                trytimes = 0
+#                tryblocktimes = 0
 
     if not alldata['data']:
         print "no zufang data 1"
@@ -325,11 +397,13 @@ if __name__=="__main__":
     
     #excepthandle(db_zf)
     #print 'Exception handle done'
-    
+
+#    getProxyIp()
+
     for xq in xq_list:
         print 'begin spidering xiaoqu %s' % xq
         xiaoqu_zufang_spider(db_zf,xq)
-        #time.sleep(random.randint(3, 5))
+        time.sleep(random.randint(20, 30))
 
     db_zf.close()
 

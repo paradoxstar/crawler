@@ -1,0 +1,7 @@
+HTTP Error 404: Not Found	xiaoqu_zufang_spider	泰福苑D2区|朝阳
+HTTP Error 404: Not Found	xiaoqu_zufang_spider	泰福苑D1区|朝阳
+HTTP Error 404: Not Found	xiaoqu_zufang_spider	泰福苑D3区|朝阳
+HTTP Error 404: Not Found	xiaoqu_zufang_spider	老虎庙|海淀
+HTTP Error 500: Internal Server Error	zufang_item_page	http://bj.lianjia.com/zufang/101100733422.html
+HTTP Error 500: Internal Server Error	zufang_item_page	http://bj.lianjia.com/zufang/101100932767.html
+HTTP Error 500: Internal Server Error	zufang_item_page	http://bj.lianjia.com/zufang/101100922324.html
