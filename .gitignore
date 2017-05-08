@@ -1,3 +1,4 @@
 *.db
 data/
 fiddler_process/
+log/
