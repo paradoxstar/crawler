@@ -117,15 +117,15 @@ def xiaoqu_page_search(db_xq,url_page=u"https://gz.lianjia.com/xiaoqu/tianhe/pg1
                 continue
             else:
                 print e
-                exception_write(e, 'xiaoqu_page_search', url)
+                exception_write(e, 'xiaoqu_page_search', url_page)
                 return 
         except (urllib2.HTTPError, urllib2.URLError) as e:
             print e
-            exception_write(e, 'xiaoqu_page_search', url)
+            exception_write(e, 'xiaoqu_page_search', url_page)
             return 
         except Exception as e:
             print e
-            exception_write(e, 'xiaoqu_page_search', url)
+            exception_write(e, 'xiaoqu_page_search', url_page)
             return
         
         human = soup.find('div',{'class':'human'})
