@@ -1,5 +1,9 @@
+.ipynb_checkpoints/
+*.ipynb
 .DS_Store
 *.db
 data/
 fiddler_process/
 log/
+*.txt
+*.bak
