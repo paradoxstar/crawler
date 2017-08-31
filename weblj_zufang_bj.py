@@ -47,7 +47,7 @@ hds=[{'User-Agent':'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, l
  
 #proxys=[]
 
-storename = 'zufang_' + time.strftime("%Y_%m_%d_%X", time.localtime())
+storename = 'zufang_beijing_' + time.strftime("%Y_%m_%d_%X", time.localtime())
 
 
 class SQLiteWraper(object):

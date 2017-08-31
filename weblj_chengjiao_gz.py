@@ -46,7 +46,7 @@ hds=[{'User-Agent':'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, l
 
 #proxys=[]
 
-storename = 'chengjiao_shanghai_' + time.strftime("%Y_%m_%d_%H_%M_%S", time.localtime())
+storename = 'chengjiao_guangzhou_' + time.strftime("%Y_%m_%d_%H_%M_%S", time.localtime())
 
 class SQLiteWraper(object):
     
@@ -182,7 +182,7 @@ def chengjiao_page_search(db_cj, url):
 #                trytimes = 0
 #                tryblocktimes = 0
 
-    thispagelist = soup.find('div',{'class':'m-list cj-list'}).findAll('li')
+    thispagelist = soup.find('ul',{'class':'listContent'}).findAll('li')
    
     j = 0
     for j in range(len(thispagelist)):
@@ -190,124 +190,109 @@ def chengjiao_page_search(db_cj, url):
         print j
         try:
             info_dict = {}
-            #####################################
-            info_table = cjitem.find('div',{'class':'info-table'}).findAll('div',{'class':'info-row'})
-            #############
-            title = info_table[0]
+            
+            title = cjitem.find('div',{'class':'title'})
             if not title.a:
                 href = ""
                 tmpl = list(title.children)
                 longname = tmpl[0]
             else:
                 href = unicode(title.a['href'])
-                longname = title.a.text
-            nameinfos = longname.split()
-            longname = " ".join(nameinfos)
-
+                longname = title.text
+            nameinfos = longname.split(' ')
+            
             info_dict[u'href'] = href
             info_dict[u'name'] = longname
             if len(nameinfos) == 3:
                 info_dict[u'xiaoqu'] = nameinfos[0]
                 info_dict[u'title'] = nameinfos[1]
                 info_dict[u'area'] = nameinfos[2]
+
             else:
                 print "Unhealth record!"
                 info_dict[u'xiaoqu'] = ""
                 info_dict[u'title'] = ""
                 info_dict[u'area'] = ""
-            #############
-            mrowinfo = info_table[1].findAll('div')
-
-            if len(mrowinfo) == 3:
-                houseinfo = mrowinfo[0]
-                hi = "".join(houseinfo.text.split()).split('|')
-                dealdate = mrowinfo[1]
-                totalprice = mrowinfo[2]
-            elif len(mrowinfo) == 2:
-                houseinfo = ""
-                hi = []
-                dealdate = mrowinfo[0]
-                totalprice = mrowinfo[1]
-            else:
-                houseinfo = ""
-                hi = []
-                dealdate = info_table[1].text
-                totalprice = ""
-
+        
+            houseinfo = cjitem.find('div',{'class':'houseInfo'})
+            hi = houseinfo.text.replace(' ', '').split('|')
+            dealdate = cjitem.find('div',{'class':'dealDate'})
+            totalprice = cjitem.find('div',{'class':'totalPrice'})
+            
             if len(hi) == 3:
-                info_dict[u'floor'] = hi[0]
-                info_dict[u'orientation'] = hi[1]
-                info_dict[u'decoration'] = hi[2]
+                info_dict[u'orientation'] = hi[0]
+                info_dict[u'decoration'] = hi[1]
+                info_dict[u'elevator'] = hi[2]
             else:
                 if len(hi) == 2:
                     print "Unhealth record!"
-                    info_dict[u'floor'] = hi[0]
-                    info_dict[u'orientation'] = ""
+                    info_dict[u'orientation'] = hi[0]
                     info_dict[u'decoration'] = hi[1]
+                    info_dict[u'elevator'] = ""
                 else:
                     print "Unhealth record!"
-                    info_dict[u'floor'] = "".join(hi)
-                    info_dict[u'orientation'] = ""
+                    info_dict[u'orientation'] = houseinfo.text
                     info_dict[u'decoration'] = ""
-            if dealdate:
-                info_dict[u'dealdate'] = dealdate.text
-            else:
-                print "Unhealth record!"
-                info_dict[u'dealdate'] = ""
-
-            if totalprice:
-                info_dict[u'totalprice'] = "".join(totalprice.text.split())
-            else:
-                print "Unhealth record!"
-                info_dict[u'totalprice'] = ""
-            #############
-            browinfo = info_table[2]
-
-            positioninfo = browinfo.span
-            if positioninfo:
-                pi = "".join(positioninfo.text.split()).split('|')
-            else:
-                pi = []
-            source = browinfo.find('div', {'class':'info-col deal-item minor'})
-            unitprice = browinfo.find('div',{'class':'info-col price-item minor'})
+                    info_dict[u'elevator'] = ""
+            info_dict[u'dealdate'] = dealdate.text
+            info_dict[u'totalprice'] = totalprice.text
+            
+            positioninfo = cjitem.find('div',{'class':'positionInfo'})
+            pi = positioninfo.text.split(' ')
+            source = cjitem.find('div', {'class': 'source'})
+            unitprice = cjitem.find('div',{'class':'unitPrice'})
             
             if len(pi) == 2:
-                info_dict[u'district'] = pi[0]
-                info_dict[u'bizcircle'] = pi[1]
+                info_dict[u'floor'] = pi[0]
+                info_dict[u'buildyear'] = pi[1]
             else:
                 print "Unhealth record!"
-                info_dict[u'district'] = positioninfo.text
-                info_dict[u'bizcircle'] = ""
-            if source:
-                info_dict[u'source'] = source.text
+                info_dict[u'floor'] = positioninfo.text
+                info_dict[u'buildyear'] = ""
+            info_dict[u'source'] = source.text
+            info_dict[u'unitprice'] = unitprice.text
+            
+            
+            classdealhouseinfo = cjitem.find('div', {'class':'dealHouseInfo'})
+            if classdealhouseinfo:
+                dealhouseinfo = classdealhouseinfo.find('span', {'class': 'dealHouseTxt'})
+                if not dealhouseinfo:
+                    dealhousetxts = {}
+                    dealhouseplaintxt = ""
+                else:
+                    dealhousetxts = dealhouseinfo.findAll('span')
+                    dealhouseplaintxt = dealhouseinfo.text
             else:
-                info_dict[u'source'] = ""
-            if unitprice:
-                info_dict[u'unitprice'] = unitprice.text
-            else:
-                info_dict[u'unitprice'] = ""
-
-            ###############################################
-            dealhouseinfo = cjitem.find('div', {'class':'property-tag-container'})
-            if not dealhouseinfo:
                 dealhousetxts = {}
                 dealhouseplaintxt = ""
-            else:
-                dealhousetxts = dealhouseinfo.findAll('span')
-                dealhouseplaintxt = dealhouseinfo.text.strip()
-
+    
             if len(dealhousetxts) == 2:
-                info_dict[u'fangben'] = dealhousetxts[0].text.strip()
-                info_dict[u'tag'] = dealhousetxts[1].text.strip()
+                info_dict[u'fangben'] = dealhousetxts[0].text
+                info_dict[u'tag'] = dealhousetxts[1].text
             else:
-                if (len(dealhouseplaintxt) > 6):
-                    info_dict[u'fangben'] = ""
-                    info_dict[u'tag'] = dealhouseplaintxt
+                info_dict[u'fangben'] = ""
+                info_dict[u'tag'] = dealhouseplaintxt
+        
+            dealCycleitem = cjitem.find('div', {'class':'dealCycleeInfo'})
+            if not dealCycleitem:
+                dealCycletxts = {}
+                dealCycleplaintxt = ""
+            else:
+                dealCycleeinfo = dealCycleitem.find('span', {'class': 'dealCycleTxt'})
+                if not dealCycleeinfo:
+                    dealCycletxts = {}
+                    dealCycleplaintxt = ""
                 else:
-                    info_dict[u'fangben'] = dealhouseplaintxt
-                    info_dict[u'tag'] = ""
-           
+                    dealCycletxts = dealCycleeinfo.findAll('span')
+                    dealCycleplaintxt = dealCycleeinfo.text
 
+            if len(dealCycletxts) == 2:
+                info_dict[u'guapai'] = dealCycletxts[0].text
+                info_dict[u'cjcycle'] = dealCycletxts[1].text
+            else:
+                info_dict[u'cjcycle'] = ""
+                info_dict[u'guapai'] = dealCycleplaintxt
+                    
         except Exception as e:
             print e
             exception_write(e, 'chengjiao_item_page_list', str(j))
@@ -380,11 +365,11 @@ def chengjiao_item_page(url):
     return info_dict
 
 
-def xiaoqu_chengjiao_spider(db_cj,xq_name=u"绿川新苑"):
+def xiaoqu_chengjiao_spider(db_cj,xq_name=u"华南新城山意轩"):
     
     trytimes = 0
 #    tryblocktimes = 0
-    url=u"http://sh.lianjia.com/chengjiao/rs"+urllib2.quote(xq_name)+"/"
+    url=u"http://gz.lianjia.com/chengjiao/rs"+urllib2.quote(xq_name)+"/"
     while 1:
         try:
 #            proxy_s = urllib2.ProxyHandler(proxys[random.randint(0, len(proxys)-1)])
@@ -431,27 +416,21 @@ def xiaoqu_chengjiao_spider(db_cj,xq_name=u"绿川新苑"):
 #                trytimes = 0
 #                tryblocktimes = 0
 
-    pagebox = soup.find('div',{'class':'c-pagination'})
+    pagebox = soup.find('div',{'class':'page-box house-lst-page-box'})
     if not pagebox:
         print "---no chengjiao record"
         return
-    
-    tpage = pagebox.find('a',{'gahref':'results_totalpage'})
-    npage = pagebox.find('a',{'gahref':'results_next_page'})
-    allpage = pagebox.findAll('a')
-    if tpage:
-        pagenum = int(tpage['gahref'].split('_d')[-1])
-    else:
-        if npage:
-            pagenum = int(allpage[-2]['gahref'].split('_d')[-1])
-        else:
-            pagenum = 1;
+
+
+    l = pagebox['page-data'].find(':')
+    r = pagebox['page-data'].find(',')
+    pagenum = int(pagebox['page-data'][l+1:r])
 
     print u"---开始爬 %s 区全部的信息" % xq_name
     print u"---total number of pages is " + str(pagenum)
 
     for j in range(pagenum):
-        url_page = u"http://sh.lianjia.com/chengjiao/d%drs%s/" % (j + 1, xq_name)
+        url_page = u"https://gz.lianjia.com/chengjiao/d%drs%s/" % (j + 1, xq_name)
         chengjiao_page_search(db_cj, url_page)    
         
         #time.sleep(random.randint(1,2))
@@ -471,40 +450,9 @@ def exception_write(e, fun_name,url):
     f.close()
 
 def excepthandle(db_cj):
-    xcs = [
-'三间房东路',
-'三间房南里4号院',
-'三间房南里5号院',
-'三间房南里7号院',
-'上东三角洲',
-'上东上层',
-'上地南路6号院',
-'上地南路8号院',
-'上地国际创业园',
-'上地西里',
-'上坡佳园',
-'上奥世纪中心',
-'上庄家园东区',
-'上庄家园西区',
-'上林世家',
-'上林苑',
-'泰福苑D2区',
-'老虎庙'
-]
+    xcs = []
 
-    cps = [
-u'http://bj.lianjia.com/chengjiao/pg1rs三里河路5号院/',
-u'http://bj.lianjia.com/chengjiao/pg2rs三里河路5号院/',
-u'http://bj.lianjia.com/chengjiao/pg1rs上林溪/',
-u'http://bj.lianjia.com/chengjiao/pg2rs上林溪/',
-u'http://bj.lianjia.com/chengjiao/pg3rs上林溪/',
-u'http://bj.lianjia.com/chengjiao/pg4rs上林溪/',
-u'http://bj.lianjia.com/chengjiao/pg1rs上海建筑/',
-u'http://bj.lianjia.com/chengjiao/pg2rs上海建筑/',
-u'http://bj.lianjia.com/chengjiao/pg3rs上海建筑/',
-u'http://bj.lianjia.com/chengjiao/pg4rs上海建筑/',
-u'http://bj.lianjia.com/chengjiao/pg5rs上海建筑/'
-]
+    cps = []
 
     for xq in xcs:
         xiaoqu_chengjiao_spider(db_cj, xq)
@@ -542,7 +490,7 @@ if __name__=="__main__":
     db_cj.execute(create_command)
    
     xq_list=[]
-    xq = open("xiaoqu_shanghai.txt", "r")
+    xq = open("xiaoqu_guangzhou.txt", "r")
     #xq = open("xq_trade_list_11_1_from_dong.txt", "r")
     for line in xq:
         xq_list.append(line.strip('\r\n')) 
