@@ -47,8 +47,7 @@ hds=[{'User-Agent':'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, l
  
 #proxys=[]
 
-storename = 'zufang_beijing_' + time.strftime("%Y_%m_%d_%X", time.localtime())
-
+storename = 'zufang_beijing_' + time.strftime("%Y_%m_%d_%H_%M_%S", time.localtime())
 
 class SQLiteWraper(object):
     
@@ -193,6 +192,7 @@ def xiaoqu_zufang_spider(db_zf, xq_name = u"京师园"):
         print "no zufang record actually"
         return
 
+    time.sleep(random.randint(3, 5))
     recordurl = unicode(reco.a['href'])
     zufang_item_page(db_zf, recordurl)
     
@@ -255,6 +255,7 @@ def zufang_item_page(db_zf, url):
     xiaoquid = unicode(soup.find('div',{'class':'zf-room'}).findAll('p')[5].a['href'][8:-1])
     #houseid = soup.find('div',{'class':'houseRecord'}).span.text[5:]
    
+    time.sleep(random.randint(3, 5))
     get_zufang_xiaoqu_data(db_zf, houseid, xiaoquid)
 
 
@@ -345,29 +346,12 @@ def exception_write(e, fun_name,url):
     f.write(line)
     f.close()
 
-def excepthandle(db_cj):
-    xzs = [
-'尚西泊图',
-]
-    zuip = [
-u'http://bj.lianjia.com/zufang/101100735278.html',
-u'http://bj.lianjia.com/zufang/101100776071.html',
-u'http://bj.lianjia.com/zufang/101100767239.html'
-]
-
-    for xq in xzs:
-        print 'begin spidering xiaoqu %s' % xq
-        xiaoqu_zufang_spider(db_cj, xq)
-
-    for cp in zuip:
-        print 'spider %s' % cp
-        zufang_item_page(db_cj, cp)
 
 
 
 if __name__=="__main__":
   
-    db_zf = SQLiteWraper('zufang.db')
+    db_zf = SQLiteWraper(storename + '.db')
     
     create_command = """create table if not exists zufang 
                 (href TEXT primary key UNIQUE,
@@ -386,7 +370,7 @@ if __name__=="__main__":
     db_zf.execute(create_command)
     
     xq_list=[]
-    xq = open("xiaoqu_2016_11_06_23_01_24_xiaoqu_district_list.txt", "r")
+    xq = open("xiaoqu_beijing.txt", "r")
     for line in xq:
         xq_list.append(line.strip('\n'))
     xq.close()
@@ -408,10 +392,9 @@ if __name__=="__main__":
             exit(-1)
             
         xiaoqu_zufang_spider(db_zf,xq)
-        #time.sleep(random.randint(60, 120))
+        time.sleep(random.randint(10, 20))
 
     db_zf.close()
 
     print 'all done'
 
-    
