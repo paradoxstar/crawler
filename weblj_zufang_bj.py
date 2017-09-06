@@ -192,7 +192,7 @@ def xiaoqu_zufang_spider(db_zf, xq_name = u"京师园"):
         print "no zufang record actually"
         return
 
-    time.sleep(random.randint(3, 5))
+#   time.sleep(random.randint(3, 5))
     recordurl = unicode(reco.a['href'])
     zufang_item_page(db_zf, recordurl)
     
@@ -255,7 +255,7 @@ def zufang_item_page(db_zf, url):
     xiaoquid = unicode(soup.find('div',{'class':'zf-room'}).findAll('p')[5].a['href'][8:-1])
     #houseid = soup.find('div',{'class':'houseRecord'}).span.text[5:]
    
-    time.sleep(random.randint(3, 5))
+#   time.sleep(random.randint(3, 5))
     get_zufang_xiaoqu_data(db_zf, houseid, xiaoquid)
 
 
@@ -274,7 +274,7 @@ def get_zufang_xiaoqu_data(db_zf, houseid, xiaoquid):
             alldata = json.loads(source_code)
         except socket.timeout as e:
             if trytimes < 5:
-                #time.sleep(2)
+                time.sleep(2)
                 trytimes += 1
                 continue
             else:
@@ -392,7 +392,7 @@ if __name__=="__main__":
             exit(-1)
             
         xiaoqu_zufang_spider(db_zf,xq)
-        time.sleep(random.randint(10, 20))
+        #time.sleep(random.randint(10, 20))
 
     db_zf.close()
 
