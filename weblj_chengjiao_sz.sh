@@ -46,7 +46,7 @@ hds=[{'User-Agent':'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, l
 
 #proxys=[]
 
-storename = 'chengjiao_guangzhou_' + time.strftime("%Y_%m_%d_%H_%M_%S", time.localtime())
+storename = 'chengjiao_shenzhen_' + time.strftime("%Y_%m_%d_%H_%M_%S", time.localtime())
 
 class SQLiteWraper(object):
     
@@ -373,7 +373,7 @@ def xiaoqu_chengjiao_spider(db_cj,xq_name=u"华南新城山意轩"):
     
     trytimes = 0
 #    tryblocktimes = 0
-    url=u"https://gz.lianjia.com/chengjiao/rs"+urllib2.quote(xq_name)+"/"
+    url=u"https://sz.lianjia.com/chengjiao/rs"+urllib2.quote(xq_name)+"/"
     while 1:
         try:
 #            proxy_s = urllib2.ProxyHandler(proxys[random.randint(0, len(proxys)-1)])
@@ -434,7 +434,7 @@ def xiaoqu_chengjiao_spider(db_cj,xq_name=u"华南新城山意轩"):
     print u"---total number of pages is " + str(pagenum)
 
     for j in range(pagenum):
-        url_page = u"https://gz.lianjia.com/chengjiao/d%drs%s/" % (j + 1, xq_name)
+        url_page = u"https://sz.lianjia.com/chengjiao/d%drs%s/" % (j + 1, xq_name)
         chengjiao_page_search(db_cj, url_page)    
         
         #time.sleep(random.randint(1,2))
@@ -484,7 +484,7 @@ if __name__=="__main__":
     db_cj.execute(create_command)
    
     xq_list=[]
-    xq = open("xiaoqu_guangzhou.txt", "r")
+    xq = open("xiaoqu_shenzhen.txt", "r")
 
     for line in xq:
         xq_list.append(line.strip('\r\n')) 

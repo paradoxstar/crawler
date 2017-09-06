@@ -442,49 +442,6 @@ def exception_write(e, fun_name,url):
     f.write(line)
     f.close()
 
-def excepthandle(db_cj):
-    xcs = [
-'三间房东路',
-'三间房南里4号院',
-'三间房南里5号院',
-'三间房南里7号院',
-'上东三角洲',
-'上东上层',
-'上地南路6号院',
-'上地南路8号院',
-'上地国际创业园',
-'上地西里',
-'上坡佳园',
-'上奥世纪中心',
-'上庄家园东区',
-'上庄家园西区',
-'上林世家',
-'上林苑',
-'泰福苑D2区',
-'老虎庙'
-]
-
-    cps = [
-u'http://bj.lianjia.com/chengjiao/pg1rs三里河路5号院/',
-u'http://bj.lianjia.com/chengjiao/pg2rs三里河路5号院/',
-u'http://bj.lianjia.com/chengjiao/pg1rs上林溪/',
-u'http://bj.lianjia.com/chengjiao/pg2rs上林溪/',
-u'http://bj.lianjia.com/chengjiao/pg3rs上林溪/',
-u'http://bj.lianjia.com/chengjiao/pg4rs上林溪/',
-u'http://bj.lianjia.com/chengjiao/pg1rs上海建筑/',
-u'http://bj.lianjia.com/chengjiao/pg2rs上海建筑/',
-u'http://bj.lianjia.com/chengjiao/pg3rs上海建筑/',
-u'http://bj.lianjia.com/chengjiao/pg4rs上海建筑/',
-u'http://bj.lianjia.com/chengjiao/pg5rs上海建筑/'
-]
-
-    for xq in xcs:
-        xiaoqu_chengjiao_spider(db_cj, xq)
-
-    for cp in cps:
-        chengjiao_page_search(db_cj, cp)
-
-
 
 
 if __name__=="__main__":
@@ -516,8 +473,8 @@ if __name__=="__main__":
     db_cj.execute(create_command)
    
     xq_list=[]
-    xq = open("xiaoqu_2016_11_06_23_01_24_xiaoqu_district_list.txt.bak", "r")
-    #xq = open("xq_trade_list_11_1_from_dong.txt", "r")
+    xq = open("xiaoqu_beijing.txt", "r")
+
     for line in xq:
         xq_list.append(line.strip('\r\n')) 
     xq.close()

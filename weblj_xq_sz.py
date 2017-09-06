@@ -196,7 +196,7 @@ def xiaoqu_page_search(db_xq,url_page=u"https://sz.lianjia.com/xiaoqu/luohuqu/pg
             exception_write(e, 'xiaoqu_page_search', str(j))
             continue
         
-        print j
+        print info_dict[u'name'] 
         try:
             command = gen_xiaoqu_insert_command(info_dict)
             db_xq.execute(command)
