@@ -458,8 +458,7 @@ def exception_write(e, fun_name,url):
 if __name__=="__main__":
     
     db_cj=SQLiteWraper(storename + '.db')
-    #db_cj=SQLiteWraper('chengjiao_2016_11_06_23:46:14.db')
-
+    #db_cj=SQLiteWraper('chengjiao_guangzhou_2017_09_07.db')
     create_command = """create table if not exists chengjiao 
                 (href TEXT, 
                 area TEXT,
@@ -485,6 +484,7 @@ if __name__=="__main__":
    
     xq_list=[]
     xq = open("xiaoqu_guangzhou.txt", "r")
+    #xq = open("xiaoqu_guangzhou_add.txt", "r")
 
     for line in xq:
         xq_list.append(line.strip('\r\n')) 
